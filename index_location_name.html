@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JNV Anantnag | Smart Agriculture Management System</title>
+<style>
+:root{--bg:#f4f7f3;--surface:#fff;--surface2:#f8fbf8;--ink:#102219;--muted:#718078;--line:#e2e9e4;--green:#176b3a;--green2:#2e8b57;--lime:#9bcf53;--dark:#09291a;--blue:#3d82b8;--amber:#c88b2b;--red:#c94d4d;--shadow:0 20px 60px rgba(17,45,29,.09);--shadow-sm:0 8px 24px rgba(17,45,29,.07)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 10% 0%,#eaf5ed 0,transparent 28%),var(--bg);color:var(--ink);min-height:100vh}.navbar{position:sticky;top:0;z-index:1000;height:74px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(226,233,228,.9)}.logo{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em;color:var(--dark);font-size:19px}.logo:before{content:"🌾";display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#176b3a,#2e8b57);color:#f2f8dc;font-size:23px;line-height:1;box-shadow:0 9px 22px rgba(9,41,26,.24);border:1px solid rgba(216,242,168,.28)}.nav-buttons{display:flex;gap:7px}.nav-btn{border:1px solid transparent;padding:10px 17px;border-radius:13px;cursor:pointer;font-weight:750;background:transparent;color:#5e6b64;transition:.25s}.nav-btn:hover{background:#eef5ef;color:var(--green)}.nav-btn.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(9,41,26,.16)}.page{display:none;max-width:1440px;margin:auto;padding:38px 5.5% 64px}.page.active{display:block}.dashboard-hero{position:relative;overflow:hidden;min-height:390px;border-radius:32px;padding:48px 52px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(115deg,rgba(7,38,24,.98) 0%,rgba(12,72,40,.94) 48%,rgba(12,72,40,.55) 100%),url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85") center/cover;box-shadow:0 28px 70px rgba(9,41,26,.18)}.dashboard-hero:after{content:"";position:absolute;right:-90px;bottom:-120px;width:430px;height:430px;border:1px solid rgba(216,242,168,.2);border-radius:50%;box-shadow:0 0 0 55px rgba(216,242,168,.035),0 0 0 110px rgba(216,242,168,.025)}.dashboard-hero .header{position:relative;z-index:1;max-width:760px;text-align:left;margin:0}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b9df8c;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:850;margin-bottom:14px}.eyebrow:before{content:"";width:24px;height:2px;background:#b9df8c;border-radius:5px}.header h1{color:#fff;font-size:clamp(40px,6vw,74px);line-height:.96;letter-spacing:-.055em;margin-bottom:13px}.header h2{color:#dceee2;font-size:clamp(20px,2.5vw,31px);font-weight:650;letter-spacing:-.025em}.header p{color:#b9cfc1;max-width:650px;margin-top:16px;font-size:15px;line-height:1.7}.connection{position:relative;z-index:2;margin-top:27px;display:flex}.connection-badge{display:inline-flex;align-items:center;gap:10px;padding:11px 15px;border-radius:999px;color:#d9eee0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-size:12px;font-weight:800;backdrop-filter:blur(12px)}.status-dot{width:9px;height:9px;border-radius:50%;background:#f0b44d;box-shadow:0 0 0 5px rgba(240,180,77,.12)}.connection-badge.online .status-dot{background:#78d36f;box-shadow:0 0 0 5px rgba(120,211,111,.12)}.connection-badge.offline .status-dot{background:#e76a6a;box-shadow:0 0 0 5px rgba(231,106,106,.12)}.section-head{display:flex;align-items:end;justify-content:space-between;margin:44px 2px 17px}.section-head h3{font-size:23px;letter-spacing:-.035em}.section-head span{font-size:12px;color:var(--muted);font-weight:700}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.card{position:relative;overflow:hidden;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:21px;padding:22px;min-height:154px;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s,border-color .25s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#cfe0d4}.card:after{content:"";position:absolute;right:-28px;bottom:-34px;width:105px;height:105px;border-radius:50%;background:#edf6ef}.card-title,.card-value,.card-sub{position:relative;z-index:1}.card-title{font-size:12px;color:#66736c;font-weight:800;letter-spacing:.01em}.card-value{font-size:30px;font-weight:900;letter-spacing:-.05em;margin-top:21px;color:var(--dark)}.card-sub{font-size:11px;color:var(--muted);margin-top:8px;font-weight:650}.soil .card-value{color:var(--green2)}.rain .card-value{color:#367fae}.insight-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:18px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow-sm)}.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.panel-head h3{font-size:17px;letter-spacing:-.025em}.panel-head span{font-size:11px;color:var(--muted);font-weight:700}.weather-card{background:linear-gradient(135deg,#fff,#f1f8f3)}.weather-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.weather-item{padding:16px;border-radius:17px;background:#fff;border:1px solid #e5ede7}.weather-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.weather-value{font-size:19px;font-weight:900;color:var(--dark);margin-top:9px}.ai-card{background:linear-gradient(145deg,#102d20,#174b30);color:#fff;border-color:#174b30}.ai-card .panel-head span{color:#a9c9b4}.ai-suggestion{padding:13px 14px;margin:8px 0;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);font-size:12px;line-height:1.55;color:#e3f0e7}.notification-card{margin-top:18px;padding:22px 24px;border-radius:22px;background:linear-gradient(100deg,#edf7ef,#fff);border:1px solid #dce9df;display:flex;align-items:center;justify-content:space-between;gap:20px}.notification-card h3{font-size:16px}.notification-status{font-size:12px;color:var(--muted);margin-top:5px}.notification-button{border:0;background:var(--dark);color:#fff;padding:12px 17px;border-radius:13px;font-weight:800;cursor:pointer;box-shadow:0 10px 22px rgba(9,41,26,.15)}.notification-button:disabled{opacity:.55;cursor:not-allowed}.system-row{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:15px}.system-row .card.system{background:linear-gradient(145deg,#09291a,#176b3a);color:#fff;border-color:#176b3a}.system-row .system .card-title,.system-row .system .card-sub{color:#b9d7c3}.system-row .system .card-value{color:#fff}.summary{margin-top:18px;padding:28px 30px;border-radius:23px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}.summary h3{font-size:16px;margin-bottom:9px}.summary p{font-size:14px;line-height:1.7;color:#65736b}.footer{text-align:center;padding:35px 0 0;color:#829087;font-size:11px;line-height:1.8}.info-container{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.info-card,.developer{background:#fff;border:1px solid var(--line);border-radius:25px;padding:30px;box-shadow:var(--shadow-sm)}.info-card h2{font-size:24px;letter-spacing:-.035em;margin-bottom:22px}.info-list{list-style:none;display:grid;gap:12px}.info-list li{padding:15px 17px;background:#f7faf7;border:1px solid #e7eee8;border-radius:15px;color:#526158;font-size:13px;line-height:1.55}.info-list strong{color:var(--dark)}.developer{display:flex;flex-direction:column;justify-content:center;min-height:280px;background:linear-gradient(145deg,#09291a,#176b3a);color:#fff}.developer-small{font-size:10px;letter-spacing:.16em;color:#a8cba4;font-weight:850}.developer-name{font-size:38px;font-weight:900;letter-spacing:-.05em;margin-top:13px}.developer-existing{font-size:14px;font-weight:600;letter-spacing:.01em;opacity:.78;margin-top:9px}.developer:after{content:"JNV ANANTNAG • SMART AGRICULTURE";margin-top:30px;color:#bcd7c5;font-size:10px;letter-spacing:.12em}.page:not(#dashboard) .header h1{color:var(--dark)}.page:not(#dashboard) .header h2{color:#607067}.page:not(#dashboard) .header p{color:var(--muted)}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(3,1fr)}.weather-grid{grid-template-columns:repeat(3,1fr)}.insight-grid{grid-template-columns:1fr}.system-row{grid-template-columns:1fr 1fr}.info-container{grid-template-columns:1fr}}
+@media(max-width:700px){.navbar{height:auto;padding:13px 5%;gap:12px;flex-direction:column}.nav-buttons{width:100%}.nav-btn{flex:1}.page{padding:22px 4% 45px}.dashboard-hero{min-height:440px;padding:34px 27px;border-radius:25px}.header h1{font-size:44px}.cards{grid-template-columns:1fr 1fr}.weather-grid{grid-template-columns:1fr 1fr}.system-row{grid-template-columns:1fr}.notification-card{align-items:flex-start;flex-direction:column}.notification-button{width:100%}.section-head{align-items:flex-start;gap:8px;flex-direction:column}}
+@media(max-width:430px){.cards{grid-template-columns:1fr}.weather-grid{grid-template-columns:1fr}.dashboard-hero{min-height:470px}.header h1{font-size:39px}.card{min-height:145px}}
+
+/* Multilingual farmer interface */
+.language-bar{display:flex;align-items:center;gap:9px;margin-left:auto;margin-right:14px}
+.language-bar label{font-size:11px;font-weight:800;color:#66736c}
+.language-select{border:1px solid #dbe5de;background:#f7faf7;color:#163322;border-radius:11px;padding:8px 30px 8px 10px;font-weight:800;font-size:12px;cursor:pointer}
+.voice-mini{border:1px solid #cfe0d4;background:#edf7ef;color:#176b3a;border-radius:11px;padding:8px 11px;font-weight:850;font-size:12px;cursor:pointer}
+.voice-mini:hover{background:#e1f0e5}
+.ai-tools{display:flex;align-items:center;gap:8px;margin-top:13px}
+.voice-button{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:#fff;padding:9px 12px;border-radius:10px;font-weight:800;font-size:11px;cursor:pointer}
+.voice-button:hover{background:rgba(255,255,255,.16)}
+.voice-status{font-size:10px;color:#b9d7c3}
+[dir="rtl"] .navbar,[dir="rtl"] .page{text-align:right}
+[dir="rtl"] .section-head,[dir="rtl"] .panel-head{flex-direction:row-reverse}
+[dir="rtl"] .language-bar{margin-left:0;margin-right:auto}
+@media(max-width:700px){.language-bar{width:100%;margin:0;justify-content:center}.language-select{flex:1}.voice-mini{white-space:nowrap}}
+.weather-location-controls{margin:-4px 0 16px;padding:14px 15px;border:1px solid #dce8df;border-radius:17px;background:rgba(255,255,255,.72)}
+.weather-location-main{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.weather-location-title{font-size:12px;font-weight:900;color:var(--dark)}
+.weather-location-mode{font-size:10px;font-weight:850;color:var(--green);background:#edf7ef;border:1px solid #d7e9db;padding:5px 8px;border-radius:999px}
+.weather-location-actions{display:flex;gap:8px;margin-top:10px}
+.weather-location-button{border:0;background:var(--dark);color:#fff;padding:9px 12px;border-radius:10px;font-weight:800;font-size:11px;cursor:pointer}
+.weather-location-button.secondary{background:#edf7ef;color:var(--green);border:1px solid #cfe0d4}
+.manual-weather-location{display:flex;gap:8px;margin-top:10px}
+.manual-weather-location input{flex:1;min-width:0;border:1px solid #d7e3da;background:#fff;color:var(--ink);padding:10px 11px;border-radius:10px;font-size:12px;outline:none}
+.manual-weather-location input:focus{border-color:#8eb79a;box-shadow:0 0 0 3px rgba(46,139,87,.08)}
+.weather-location-help{font-size:10px;line-height:1.5;color:var(--muted);margin-top:9px}
+@media(max-width:520px){.weather-location-main{align-items:flex-start;flex-direction:column}.weather-location-actions{flex-direction:column}.weather-location-button{width:100%}.manual-weather-location{flex-direction:column}}
+
+</style>
+<style>
+.crop-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 18px}
+.crop-toolbar h1{font-size:32px;letter-spacing:-.045em;color:var(--dark)}
+.crop-toolbar p{font-size:13px;color:var(--muted);margin-top:5px}
+.crop-note{padding:10px 13px;border:1px solid #dce8df;background:#f4faf5;border-radius:12px;font-size:11px;color:#526158;font-weight:700}
+.crop-table-wrap{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:auto;box-shadow:var(--shadow-sm)}
+.crop-table{width:100%;border-collapse:collapse;min-width:920px}
+.crop-table th{background:#09291a;color:#dff0e3;padding:14px 13px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.crop-table td{padding:14px 13px;border-bottom:1px solid #edf1ee;font-size:12px;color:#506057;white-space:nowrap}
+.crop-table tr:last-child td{border-bottom:0}
+.crop-table tr:hover td{background:#f7faf7}
+.crop-name{font-weight:900;color:var(--dark);font-size:13px}
+.crop-season{font-weight:750;color:var(--green)}
+.crop-pill{display:inline-flex;padding:5px 8px;border-radius:999px;background:#edf6ef;color:var(--green);font-size:10px;font-weight:850}
+.crop-focus{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.crop-mini{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow-sm)}
+.crop-mini h3{font-size:16px;color:var(--dark);margin-bottom:10px}
+.crop-mini p{font-size:12px;color:var(--muted);line-height:1.65}
+.crop-mini strong{color:var(--green)}
+.crop-legend{margin-top:14px;font-size:11px;color:var(--muted);line-height:1.6}
+@media(max-width:800px){.crop-focus{grid-template-columns:1fr}.crop-toolbar{align-items:flex-start;flex-direction:column}}
+</style>
+
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo" id="brandName">JNV Anantnag</div>
+  <div class="language-bar">
+    <label for="languageSelect" id="languageLabel">Language</label>
+    <select id="languageSelect" class="language-select" onchange="setInterfaceLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="ur">اردو</option>
+      <option value="ks">کٲشُر / Kashmiri</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+    </select>
+  </div>
+  <div class="nav-buttons">
+    <button class="nav-btn active" id="navDashboard" onclick="showPage('dashboard', this)">Dashboard</button>
+    <button class="nav-btn" id="navCrops" onclick="showPage('crops', this)">Crop Guide</button>
+    <button class="nav-btn" id="navAbout" onclick="showPage('about', this)">Project Information</button>
+  </div>
+</nav>
+
+<section id="dashboard" class="page active">
+  <div class="dashboard-hero">
+    <div class="header">
+      <div class="eyebrow" id="heroEyebrow">Live IoT Agriculture Intelligence</div>
+      <h1>JNV Anantnag</h1>
+      <h2 id="heroTitle">Smart Agriculture Management System</h2>
+      <p id="heroDescription">One elegant control surface for field conditions, environmental intelligence, smart recommendations and ESP32 health.</p>
+    </div>
+    <div class="connection"><div id="connectionBadge" class="connection-badge"><span class="status-dot"></span><span id="connectionText">Connecting to Firebase...</span></div></div>
+  </div>
+
+  <div class="section-head"><h3 id="sensorHeading">Live Sensor Overview</h3><span id="sensorMeta">REAL-TIME • ESP32 + FIREBASE</span></div>
+  <div class="cards">
+    <div class="card"><div class="card-title" id="labelTemperature">🌡 Temperature</div><div id="temperature" class="card-value">--</div><div class="card-sub">DHT22 Sensor</div></div>
+    <div class="card"><div class="card-title" id="labelHumidity">💧 Humidity</div><div id="humidity" class="card-value">--</div><div class="card-sub">Relative Humidity</div></div>
+    <div class="card soil"><div class="card-title" id="labelSoilMoisture">🌱 Soil Moisture</div><div id="soilMoisture" class="card-value">--</div><div id="soilStatus" class="card-sub">--</div></div>
+    <div class="card rain"><div class="card-title" id="labelRain">🌧 Rain Status</div><div id="rain" class="card-value">--</div><div id="rainStatus" class="card-sub">--</div></div>
+    <div class="card"><div class="card-title" id="labelPH">🧪 Soil pH</div><div id="soilPH" class="card-value">Reading Unavailable</div><div class="card-sub">pH Sensor</div></div>
+  </div>
+
+  <div class="section-head"><h3 id="environmentHeading">Environmental Intelligence</h3><span id="environmentMeta">FORECAST • AI ADVISORY</span></div>
+  <div class="insight-grid">
+    <div class="panel weather-card"><div class="panel-head"><h3 id="weatherHeading">🌦 Weather Forecast</h3><span id="weatherUpdated">Weather data loading...</span></div><div class="weather-location-controls">
+      <div class="weather-location-main">
+        <div class="weather-location-title">📍 Weather Location</div>
+        <div id="weatherLocationMode" class="weather-location-mode">Automatic GPS</div>
+      </div>
+      <div class="weather-location-actions">
+        <button type="button" class="weather-location-button" onclick="useAutomaticWeatherLocation()">Use My Location</button>
+        <button type="button" class="weather-location-button secondary" onclick="toggleManualWeatherLocation()">Manual Location</button>
+      </div>
+      <div id="manualWeatherLocationPanel" class="manual-weather-location" hidden>
+        <input id="manualWeatherLocationInput" type="text" placeholder="Enter village, town or district" autocomplete="off">
+        <button type="button" class="weather-location-button" onclick="useManualWeatherLocation()">Apply</button>
+      </div>
+      <div id="weatherLocationHelp" class="weather-location-help">Allow location access for precise local weather. If Chrome does not show a permission prompt, open Chrome site settings and set Location to Allow.</div>
+    </div>
+    <div class="weather-grid">
+      <div class="weather-item"><div class="weather-label" id="weatherLabelLocation">Location</div><div id="weatherLocation" class="weather-value">Anantnag</div></div>
+      <div class="weather-item"><div class="weather-label" id="weatherLabelTemperature">Temperature</div><div id="weatherTemperature" class="weather-value">--</div></div>
+      <div class="weather-item"><div class="weather-label" id="weatherLabelRain">Rain Forecast</div><div id="weatherRain" class="weather-value">--</div></div>
+      <div class="weather-item"><div class="weather-label" id="weatherLabelHumidity">Humidity</div><div id="weatherHumidity" class="weather-value">--</div></div>
+      <div class="weather-item"><div class="weather-label" id="weatherLabelWind">Wind</div><div id="weatherWind" class="weather-value">--</div></div>
+    </div></div>
+    <div class="panel ai-card"><div class="panel-head"><h3 id="insightsHeading">🤖 Smart Farm Insights</h3><span id="advisoryLabel">ADVISORY</span></div><div id="aiSuggestions">Waiting for sensor data...</div>
+      <div class="ai-tools">
+        <button id="voiceInsightButton" class="voice-button" onclick="speakFarmerInsights()">🔊 Voice Farmer Insight</button>
+        <span id="voiceStatus" class="voice-status">Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification-card"><div><h3 id="notificationHeading">🔔 Farmer Notifications</h3><div id="notificationStatus" class="notification-status">Notifications are disabled.</div></div><button id="notificationButton" class="notification-button" onclick="enableNotifications()">Enable Notifications</button></div>
+
+  <div class="section-head"><h3 id="healthHeading">System Health</h3><span id="healthMeta">CONTROLLER • CLOUD • TIMING</span></div>
+  <div class="system-row">
+    <div class="card system"><div class="card-title" id="labelESP">📡 ESP32 Status</div><div id="esp32" class="card-value">--</div><div class="card-sub">Controller</div></div>
+    <div class="card"><div class="card-title" id="labelLastUpdate">🕒 Last ESP32 Update</div><div id="lastUpdate" class="card-value" style="font-size:20px">--</div><div class="card-sub">Firebase timestamp</div></div>
+    <div class="card"><div class="card-title" id="labelUptime">⏱ ESP32 Uptime</div><div id="uptime" class="card-value" style="font-size:20px">--</div><div class="card-sub">Since ESP32 restart</div></div>
+  </div>
+  <div class="card" style="margin-top:15px;min-height:auto"><div class="card-title" id="labelCloud">☁ Cloud Refresh</div><div id="cloudRefresh" class="card-value" style="font-size:20px">--</div><div class="card-sub">Browser refresh time</div></div>
+
+  <div class="summary"><h3 id="summaryHeading">System Summary</h3><p id="summaryText">Waiting for sensor data...</p></div>
+  <div class="footer">JNV Anantnag<br>Smart Agriculture Management System</div>
+</section>
+
+
+<section id="crops" class="page">
+  <div class="crop-toolbar">
+    <div>
+      <div class="eyebrow" id="cropEyebrow">Crop Planning • Field Reference</div>
+      <h1 id="cropTitle">Crop Specifications</h1>
+      <p id="cropDescription">Quick comparison of practical growing targets for common crops.</p>
+    </div>
+    <div class="crop-note" id="cropNote">Guide values • verify with local soil tests and crop variety</div>
+  </div>
+
+  <div class="crop-table-wrap">
+    <table class="crop-table">
+      <thead>
+        <tr>
+          <th>Crop</th><th>Temperature</th><th>Soil Moisture</th><th>Preferred pH</th>
+          <th>Humidity</th><th>Water Need</th><th>Typical Season</th><th>Key Requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="crop-name">🍎 Apple</td><td>15–25 °C</td><td>60–80%</td><td>6.0–7.0</td>
+          <td>60–75%</td><td><span class="crop-pill">Moderate</span></td><td class="crop-season">Spring–Autumn</td><td>Good drainage + winter chill</td>
+        </tr>
+        <tr>
+          <td class="crop-name">🍅 Tomato</td><td>18–27 °C</td><td>60–75%</td><td>6.0–6.8</td>
+          <td>60–70%</td><td><span class="crop-pill">Moderate–High</span></td><td class="crop-season">Spring–Summer</td><td>Sunlight + steady moisture</td>
+        </tr>
+        <tr>
+          <td class="crop-name">🥔 Potato</td><td>15–21 °C</td><td>65–80%</td><td>5.0–6.5</td>
+          <td>60–75%</td><td><span class="crop-pill">Moderate</span></td><td class="crop-season">Spring–Autumn</td><td>Loose, well-drained soil</td>
+        </tr>
+        <tr>
+          <td class="crop-name">🌽 Maize</td><td>18–30 °C</td><td>60–75%</td><td>5.8–7.0</td>
+          <td>55–75%</td><td><span class="crop-pill">Moderate–High</span></td><td class="crop-season">Spring–Summer</td><td>Warm soil + sunlight</td>
+        </tr>
+        <tr>
+          <td class="crop-name">🥬 Cabbage</td><td>15–22 °C</td><td>65–80%</td><td>6.0–7.5</td>
+          <td>60–80%</td><td><span class="crop-pill">Moderate</span></td><td class="crop-season">Spring / Autumn</td><td>Cool conditions + even moisture</td>
+        </tr>
+        <tr>
+          <td class="crop-name">🫘 Beans</td><td>18–27 °C</td><td>60–75%</td><td>6.0–7.0</td>
+          <td>50–70%</td><td><span class="crop-pill">Moderate</span></td><td class="crop-season">Spring–Summer</td><td>Warm soil + good drainage</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="crop-focus">
+    <div class="crop-mini">
+      <h3>🍎 Apple</h3>
+      <p><strong>Best monitored signals:</strong> soil moisture, pH, temperature and rainfall. Avoid waterlogging; orchard soils need reliable drainage.</p>
+    </div>
+    <div class="crop-mini">
+      <h3>🍅 Tomato</h3>
+      <p><strong>Best monitored signals:</strong> temperature, humidity and soil moisture. Keep moisture consistent and watch high humidity during disease-prone periods.</p>
+    </div>
+    <div class="crop-mini">
+      <h3>🥔 Potato</h3>
+      <p><strong>Best monitored signals:</strong> soil moisture and pH. Cooler soil and good drainage are especially important for healthy tuber development.</p>
+    </div>
+  </div>
+
+  <div class="crop-legend">
+    These are general planning ranges, not a diagnosis or fertilizer prescription. Actual targets vary with cultivar, growth stage, soil type, irrigation method and local climate.
+  </div>
+  <div class="footer">JNV Anantnag<br>Smart Agriculture Management System</div>
+</section>
+
+<section id="about" class="page">
+  <div class="header" style="text-align:center;margin-bottom:28px"><div class="eyebrow" id="aboutEyebrow">About the system</div><h1 id="aboutTitle">Project Information</h1><h2>Smart Agriculture Management System</h2><p id="aboutDescription">IoT-driven monitoring with smart agricultural insights.</p></div>
+  <div class="info-container"><div class="info-card"><h2 id="projectDetailsHeading">Project Details</h2><ul class="info-list">
+    <li><strong>1. Project Type:</strong> A Smart Agriculture Management System based on IoT and AI technologies.</li>
+    <li><strong>2. IoT-Based System:</strong> The project uses Internet of Things technology for agriculture-related monitoring and control.</li>
+    <li><strong>3. AI-Based System:</strong> The project incorporates an AI-based approach for smart agriculture management.</li>
+    <li><strong>4. Farm Monitoring:</strong> The system automates farm monitoring.</li>
+    <li><strong>5. Resource Control:</strong> The system automates resource control for agricultural applications.</li>
+    <li><strong>6. Crop Yield:</strong> The system is designed to help increase crop yields.</li>
+    <li><strong>7. Water Reduction:</strong> The project aims to reduce water usage.</li>
+    <li><strong>8. Labour Reduction:</strong> The project aims to reduce the amount of labour required for agricultural management.</li>
+  </ul></div><div class="developer"><div class="developer-small">DESIGNED BY</div><div class="developer-name">Raouf And Arfat</div><div class="developer-existing">Er. Tahir Insights</div></div></div>
+  <div class="footer">JNV Anantnag<br>Smart Agriculture Management System</div>
+</section>
+
+<script>
+
+// ======================================================
+// FIREBASE CONFIGURATION
+// ======================================================
+
+const FIREBASE_URL =
+    "https://smart-agriculture-manage-2bd9e-default-rtdb.asia-southeast1.firebasedatabase.app";
+
+const FIREBASE_PATH =
+    "/smartAgriculture.json";
+
+
+// ======================================================
+// PAGE SWITCHING
+// ======================================================
+
+function showPage(pageId, button) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+}
+
+
+// ======================================================
+// CONNECTION STATUS
+// ======================================================
+
+function setConnectionStatus(status, message = "") {
+
+    const badge =
+        document.getElementById("connectionBadge");
+
+    const text =
+        document.getElementById("connectionText");
+
+    badge.classList.remove(
+        "online",
+        "offline"
+    );
+
+    if (status === "online") {
+
+        badge.classList.add("online");
+
+        text.textContent =
+            "ESP32 ONLINE • FIREBASE CONNECTED";
+
+    }
+
+    else if (status === "offline") {
+
+        badge.classList.add("offline");
+
+        text.textContent =
+            message || "ESP32 DATA OFFLINE";
+
+    }
+
+    else {
+
+        text.textContent =
+            message || "Connecting to Firebase...";
+
+    }
+}
+
+
+// ======================================================
+// NUMBER FORMAT
+// ======================================================
+
+function numberValue(value, decimals = 1) {
+
+    const number = Number(value);
+
+    if (!Number.isFinite(number)) {
+        return "--";
+    }
+
+    return number.toFixed(decimals);
+}
+
+
+// ======================================================
+// UNIX TIME FORMAT
+// ======================================================
+
+function formatTimestamp(timestamp) {
+
+    const value = Number(timestamp);
+
+    if (!Number.isFinite(value) || value <= 0) {
+        return "Time unavailable";
+    }
+
+    const date =
+        new Date(value * 1000);
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            dateStyle: "medium",
+            timeStyle: "medium"
+        }
+    );
+}
+
+
+// ======================================================
+// SOIL pH
+// ======================================================
+
+function updateSoilPH(data) {
+    const element = document.getElementById("soilPH");
+    if (!element) return;
+
+    const ph = Number(data && data.pH);
+    element.textContent = Number.isFinite(ph) ? ph.toFixed(1) + " pH" : "Reading Unavailable";
+}
+
+
+// ======================================================
+// WEATHER FORECAST
+// ======================================================
+
+// ======================================================
+// WEATHER LOCATION + FORECAST
+// ======================================================
+//
+// Firebase code is intentionally untouched.
+// Weather uses a separate location layer:
+// 1) Automatic browser GPS when available/allowed.
+// 2) Manual village/town/district search as a fallback or override.
+// GPS coordinates are kept only in memory for the weather request.
+
+const WEATHER_DEFAULT_LOCATION = {
+    name: "Anantnag, Jammu & Kashmir",
+    latitude: 33.7311,
+    longitude: 75.1487,
+    mode: "Default"
+};
+
+let weatherLocation = { ...WEATHER_DEFAULT_LOCATION };
+
+function setWeatherLocationUI(mode, name, helpText) {
+    const location = document.getElementById("weatherLocation");
+    const modeElement = document.getElementById("weatherLocationMode");
+    const help = document.getElementById("weatherLocationHelp");
+
+    if (location) location.textContent = name || "Unknown location";
+    if (modeElement) modeElement.textContent = mode || "Weather Location";
+    if (help && helpText) help.textContent = helpText;
+}
+
+async function fetchWeatherForecast(latitude, longitude) {
+    const updated = document.getElementById("weatherUpdated");
+
+    const url =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=" + encodeURIComponent(latitude) +
+        "&longitude=" + encodeURIComponent(longitude) +
+        "&current=temperature_2m,relative_humidity_2m,wind_speed_10m" +
+        "&daily=precipitation_probability_max" +
+        "&forecast_days=3" +
+        "&timezone=Asia%2FKolkata";
+
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) throw new Error("Weather HTTP " + response.status);
+
+    const data = await response.json();
+    const current = data.current || {};
+    const daily = data.daily || {};
+    const rainProbabilities = Array.isArray(daily.precipitation_probability_max)
+        ? daily.precipitation_probability_max.map(Number).filter(Number.isFinite)
+        : [];
+
+    // Keep the complete weather context available to the farm-advisory engine.
+    // This does not change the Firebase workflow.
+    window.latestWeatherData = {
+        temperature: Number(current.temperature_2m),
+        humidity: Number(current.relative_humidity_2m),
+        wind: Number(current.wind_speed_10m),
+        rainToday: rainProbabilities.length ? rainProbabilities[0] : NaN,
+        rainForecast: rainProbabilities,
+        rainMaxNext3Days: rainProbabilities.length ? Math.max.apply(null, rainProbabilities) : NaN
+    };
+
+    document.getElementById("weatherTemperature").textContent =
+        Number.isFinite(Number(current.temperature_2m))
+            ? Number(current.temperature_2m).toFixed(1) + " °C"
+            : "--";
+
+    document.getElementById("weatherHumidity").textContent =
+        Number.isFinite(Number(current.relative_humidity_2m))
+            ? Number(current.relative_humidity_2m).toFixed(0) + " %"
+            : "--";
+
+    document.getElementById("weatherWind").textContent =
+        Number.isFinite(Number(current.wind_speed_10m))
+            ? Number(current.wind_speed_10m).toFixed(1) + " km/h"
+            : "--";
+
+    const rainProbability = rainProbabilities.length ? rainProbabilities[0] : null;
+
+    document.getElementById("weatherRain").textContent =
+        Number.isFinite(Number(rainProbability))
+            ? Number(rainProbability).toFixed(0) + " %"
+            : "--";
+
+    // Re-evaluate immediately when new weather arrives, even if Firebase has not changed.
+    if (window.latestFirebaseData) updateAISuggestions(window.latestFirebaseData);
+
+    if (updated) {
+        updated.textContent = "Updated: " + new Date().toLocaleTimeString("en-IN");
+    }
+}
+
+function formatGPSLocation(latitude, longitude) {
+    return "GPS • " + latitude.toFixed(5) + ", " + longitude.toFixed(5);
+}
+
+async function reverseGeocodeGPSLocation(latitude, longitude) {
+    const fallback = formatGPSLocation(latitude, longitude);
+    try {
+        const url =
+            "https://api.bigdatacloud.net/data/reverse-geocode-client" +
+            "?latitude=" + encodeURIComponent(latitude) +
+            "&longitude=" + encodeURIComponent(longitude) +
+            "&localityLanguage=en";
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error("Reverse geocoding HTTP " + response.status);
+        const data = await response.json();
+
+        const locality = data.locality || data.city || "";
+        const state = data.principalSubdivision || "";
+        const country = data.countryName || "";
+        const parts = [locality, state, country].filter(Boolean);
+
+        return parts.length ? parts.slice(0, 3).join(", ") : fallback;
+    } catch (error) {
+        console.warn("GPS reverse geocoding failed:", error);
+        return fallback;
+    }
+}
+
+async function useAutomaticWeatherLocation() {
+    const updated = document.getElementById("weatherUpdated");
+    const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+    // Chrome requires a secure context for web geolocation. file:// pages are not a
+    // reliable permission origin, so explain exactly what the farmer needs to do.
+    if (!window.isSecureContext && !isLocalhost) {
+        setWeatherLocationUI(
+            "GPS requires HTTPS",
+            "Location permission unavailable",
+            "Chrome blocks website GPS on a local file. Open this dashboard from HTTPS or localhost, then allow Location. Manual Location still works."
+        );
+        if (updated) updated.textContent = "GPS unavailable on this page type.";
+        weatherLocation = { ...WEATHER_DEFAULT_LOCATION };
+        await loadWeather();
+        return;
+    }
+
+    if (!("geolocation" in navigator)) {
+        setWeatherLocationUI(
+            "GPS unavailable",
+            WEATHER_DEFAULT_LOCATION.name,
+            "This browser does not provide geolocation. Use Manual Location."
+        );
+        weatherLocation = { ...WEATHER_DEFAULT_LOCATION };
+        await loadWeather();
+        return;
+    }
+
+    setWeatherLocationUI(
+        "Requesting Location…",
+        "Locating your farm…",
+        "Chrome should ask for Location permission. Choose Allow and try again if necessary."
+    );
+    if (updated) updated.textContent = "Detecting current device location…";
+
+    const applyGPSPosition = async function(position) {
+        const latitude = Number(position.coords.latitude);
+        const longitude = Number(position.coords.longitude);
+        if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+            throw new Error("Invalid GPS coordinates");
+        }
+
+        const readableLocation = await reverseGeocodeGPSLocation(latitude, longitude);
+
+        weatherLocation = {
+            name: readableLocation,
+            latitude,
+            longitude,
+            mode: "Automatic GPS"
+        };
+
+        setWeatherLocationUI(
+            "Automatic GPS",
+            weatherLocation.name,
+            "Using your current device location for local weather. Coordinates are not stored by this dashboard."
+        );
+        await loadWeather();
+    };
+
+    const handleGPSError = async function(error) {
+        console.warn("Geolocation error:", error);
+        let message = "Chrome could not determine your current location.";
+        if (error && error.code === 1) {
+            message = "Location permission was denied. Open Chrome site permissions and set Location to Allow, then press Use My Location again.";
+        } else if (error && error.code === 2) {
+            message = "Location is unavailable. Turn on Android Location/GPS, then press Use My Location again.";
+        } else if (error && error.code === 3) {
+            message = "Location request timed out. Turn on Android Location/GPS and try again.";
+        }
+
+        setWeatherLocationUI(
+            "Location not granted",
+            "Enable Location in Chrome",
+            message + " Manual Location remains available."
+        );
+        if (updated) updated.textContent = "Location permission/location service needs attention.";
+        weatherLocation = { ...WEATHER_DEFAULT_LOCATION };
+        await loadWeather();
+    };
+
+    navigator.geolocation.getCurrentPosition(
+        applyGPSPosition,
+        handleGPSError,
+        {
+            enableHighAccuracy: true,
+            timeout: 20000,
+            maximumAge: 0
+        }
+    );
+}
+
+function toggleManualWeatherLocation() {
+    const panel = document.getElementById("manualWeatherLocationPanel");
+    if (!panel) return;
+
+    panel.hidden = !panel.hidden;
+
+    if (!panel.hidden) {
+        const input = document.getElementById("manualWeatherLocationInput");
+        if (input) {
+            input.focus();
+            input.select();
+        }
+    }
+}
+
+async function useManualWeatherLocation() {
+    const input = document.getElementById("manualWeatherLocationInput");
+    const updated = document.getElementById("weatherUpdated");
+
+    const query = input ? input.value.trim() : "";
+    if (!query) {
+        setWeatherLocationUI(
+            "Manual",
+            "Enter a location",
+            "Type a village, town or district, then press Apply."
+        );
+        return;
+    }
+
+    if (updated) updated.textContent = "Finding location…";
+
+    try {
+        const url =
+            "https://geocoding-api.open-meteo.com/v1/search" +
+            "?name=" + encodeURIComponent(query) +
+            "&count=5&language=en&format=json";
+
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error("Geocoding HTTP " + response.status);
+
+        const data = await response.json();
+        const results = Array.isArray(data.results) ? data.results : [];
+
+        if (!results.length) {
+            throw new Error("Location not found");
+        }
+
+        const place = results[0];
+        const latitude = Number(place.latitude);
+        const longitude = Number(place.longitude);
+
+        if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+            throw new Error("Location coordinates unavailable");
+        }
+
+        weatherLocation = {
+            name: [
+                place.name,
+                place.admin1,
+                place.country
+            ].filter(Boolean).join(", "),
+            latitude,
+            longitude,
+            mode: "Manual"
+        };
+
+        // Only the manual place name is stored; precise GPS is never stored.
+        localStorage.setItem("smartFarmWeatherManualLocation", JSON.stringify({
+            name: weatherLocation.name,
+            latitude: latitude,
+            longitude: longitude
+        }));
+
+        setWeatherLocationUI(
+            "Manual Location",
+            weatherLocation.name,
+            "Using your selected location. Press Use My Location anytime to switch back to GPS."
+        );
+
+        await loadWeather();
+    } catch (error) {
+        console.error("Manual weather location error:", error);
+        if (updated) updated.textContent = "Location not found.";
+        setWeatherLocationUI(
+            "Manual",
+            query,
+            "Location could not be found. Try a nearby town, district or village name."
+        );
+    }
+}
+
+function loadSavedManualWeatherLocation() {
+    try {
+        const saved = JSON.parse(localStorage.getItem("smartFarmWeatherManualLocation") || "null");
+
+        if (
+            saved &&
+            typeof saved.name === "string" &&
+            Number.isFinite(Number(saved.latitude)) &&
+            Number.isFinite(Number(saved.longitude))
+        ) {
+            weatherLocation = {
+                name: saved.name,
+                latitude: Number(saved.latitude),
+                longitude: Number(saved.longitude),
+                mode: "Manual"
+            };
+
+            setWeatherLocationUI(
+                "Manual Location",
+                weatherLocation.name,
+                "Using your saved manual weather location. Press Use My Location for GPS weather."
+            );
+
+            return true;
+        }
+    } catch (error) {
+        console.warn("Saved weather location could not be loaded:", error);
+    }
+
+    return false;
+}
+
+async function loadWeather() {
+    const updated = document.getElementById("weatherUpdated");
+
+    try {
+        await fetchWeatherForecast(
+            weatherLocation.latitude,
+            weatherLocation.longitude
+        );
+
+        setWeatherLocationUI(
+            weatherLocation.mode || "Weather Location",
+            weatherLocation.name,
+            weatherLocation.mode === "Automatic GPS"
+                ? "Using your current GPS coordinates for local weather. Coordinates are not stored by this dashboard."
+                : "Weather location can be changed with Manual Location or Use My Location."
+        );
+    } catch (error) {
+        console.error("Weather forecast error:", error);
+        if (updated) updated.textContent = "Weather forecast temporarily unavailable.";
+    }
+}
+
+// ======================================================
+// AI SUGGESTIONS
+// ======================================================
+
+function updateAISuggestions(data) {
+    const container = document.getElementById("aiSuggestions");
+    if (!container) return;
+
+    const suggestions = [];
+    const moisture = Number(data && data.soilMoisture);
+    const ph = Number(data && data.pH);
+    const temperature = Number(data && data.temperature);
+    const humidity = Number(data && data.humidity);
+    const rainDetected = data && (data.rain === true || data.rain === "true" || data.rain === 1);
+
+    if (Number.isFinite(moisture)) {
+        if (moisture <= 30) suggestions.push("🌱 Soil moisture is low. Check whether irrigation is needed.");
+        else if (moisture >= 75) suggestions.push("💧 Soil moisture is high. Avoid unnecessary watering.");
+        else suggestions.push("🌱 Soil moisture is in a moderate range. Continue monitoring.");
+    }
+
+    if (Number.isFinite(ph)) {
+        if (ph < 5.5) suggestions.push("🧪 Soil pH is acidic. Consider checking the soil before making amendments.");
+        else if (ph > 8.0) suggestions.push("🧪 Soil pH is alkaline. Consider checking the soil before making amendments.");
+        else suggestions.push("🧪 Soil pH is within the monitored range.");
+    }
+
+    if (rainDetected) suggestions.push("🌧 Rain is detected. Avoid unnecessary irrigation and monitor soil moisture.");
+    if (Number.isFinite(temperature) && temperature >= 35) suggestions.push("🌡 Temperature is high. Monitor crops and soil moisture closely.");
+    if (Number.isFinite(humidity) && humidity >= 85) suggestions.push("💧 Humidity is high. Monitor crops for moisture-related problems.");
+
+    if (!suggestions.length) suggestions.push("Waiting for valid sensor readings to generate suggestions.");
+
+    container.innerHTML = suggestions.map(item => '<div class="ai-suggestion">' + item + '</div>').join('');
+}
+
+
+// ======================================================
+// FARMER NOTIFICATIONS
+// ======================================================
+
+const notificationState = {};
+
+function setNotificationStatus(message) {
+    const element = document.getElementById("notificationStatus");
+    if (element) element.textContent = message;
+}
+
+function updateNotificationButton() {
+    const button = document.getElementById("notificationButton");
+    if (!button) return;
+
+    const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+    if (!window.isSecureContext && !isLocalhost) {
+        button.disabled = true;
+        button.textContent = "Use HTTPS for Notifications";
+        setNotificationStatus("Chrome blocks web notifications on a local file. Open the dashboard using HTTPS or localhost.");
+        return;
+    }
+
+    if (!("Notification" in window)) {
+        button.disabled = true;
+        button.textContent = "Notifications Not Supported";
+        setNotificationStatus("This browser does not provide the Notifications API.");
+        return;
+    }
+
+    if (Notification.permission === "granted") {
+        button.disabled = true;
+        button.textContent = "Notifications Enabled";
+        setNotificationStatus("Automatic farmer alerts are enabled.");
+    } else if (Notification.permission === "denied") {
+        button.disabled = false;
+        button.textContent = "How to Enable Notifications";
+        setNotificationStatus("Chrome has blocked notifications for this site. Open Chrome site settings → Notifications → Allow, then return here.");
+    } else {
+        button.disabled = false;
+        button.textContent = "Enable Notifications";
+        setNotificationStatus("Tap Enable Notifications and choose Allow in Chrome.");
+    }
+}
+
+async function enableNotifications() {
+    const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+    if (!window.isSecureContext && !isLocalhost) {
+        setNotificationStatus("Notifications require HTTPS or localhost. A file:// HTML page cannot request notification permission in Chrome.");
+        updateNotificationButton();
+        return;
+    }
+
+    if (!("Notification" in window)) {
+        updateNotificationButton();
+        return;
+    }
+
+    if (Notification.permission === "denied") {
+        setNotificationStatus("Chrome has already blocked this site's notifications. Open Chrome site settings → Notifications → Allow, then reload the page.");
+        return;
+    }
+
+    try {
+        const permission = await Notification.requestPermission();
+        updateNotificationButton();
+
+        if (permission === "granted") {
+            new Notification("JNV Anantnag Smart Agriculture", {
+                body: "Farmer notifications are now enabled."
+            });
+        } else if (permission === "denied") {
+            setNotificationStatus("Notifications were denied. Enable Notifications for this site in Chrome site settings.");
+        } else {
+            setNotificationStatus("Notification permission was dismissed. Tap Enable Notifications again when ready.");
+        }
+    } catch (error) {
+        console.error("Notification permission error:", error);
+        setNotificationStatus("Chrome could not request notifications. Make sure the dashboard is opened on HTTPS or localhost.");
+    }
+}
+
+function sendFarmerAlert(key, title, body) {
+    if (!("Notification" in window) || Notification.permission !== "granted") return;
+    if (notificationState[key]) return;
+
+    notificationState[key] = true;
+    new Notification(title, { body: body });
+}
+
+function resetFarmerAlert(key) {
+    notificationState[key] = false;
+}
+
+function checkAutomaticAlerts(data) {
+    const moisture = Number(data && data.soilMoisture);
+    const ph = Number(data && data.pH);
+    const temperature = Number(data && data.temperature);
+    const humidity = Number(data && data.humidity);
+    const rainDetected = data && (data.rain === true || data.rain === "true" || data.rain === 1);
+    const esp32Offline = !data || !data.esp32 || String(data.esp32).toLowerCase() === "offline";
+
+    if (Number.isFinite(moisture) && moisture <= 30) sendFarmerAlert("lowMoisture", "🌱 Low Soil Moisture", "Soil moisture is low. Check irrigation requirements.");
+    else if (moisture > 35) resetFarmerAlert("lowMoisture");
+
+    if (Number.isFinite(ph) && (ph < 5.5 || ph > 8.0)) sendFarmerAlert("abnormalPH", "🧪 Soil pH Alert", "Soil pH is outside the preferred monitoring range.");
+    else if (Number.isFinite(ph) && ph >= 5.8 && ph <= 7.5) resetFarmerAlert("abnormalPH");
+
+    if (rainDetected) sendFarmerAlert("rain", "🌧 Rain Detected", "Rain has been detected. Avoid unnecessary irrigation.");
+    else resetFarmerAlert("rain");
+
+    if (Number.isFinite(temperature) && temperature >= 35) sendFarmerAlert("highTemperature", "🌡 High Temperature", "High temperature detected in the monitored area.");
+    else if (temperature < 33) resetFarmerAlert("highTemperature");
+
+    if (Number.isFinite(humidity) && humidity >= 85) sendFarmerAlert("highHumidity", "💧 High Humidity", "High humidity detected. Monitor crop conditions.");
+    else if (humidity < 80) resetFarmerAlert("highHumidity");
+
+    if (esp32Offline) sendFarmerAlert("esp32Offline", "📡 ESP32 Alert", "ESP32 data appears to be offline or unavailable.");
+    else resetFarmerAlert("esp32Offline");
+}
+
+updateNotificationButton();
+
+
+// ======================================================
+// UPDATE DASHBOARD
+// ======================================================
+
+function updateDashboard(data) {
+
+    if (!data || typeof data !== "object") {
+
+        setConnectionStatus(
+            "offline",
+            "Firebase connected • No sensor data"
+        );
+
+        return;
+    }
+
+    updateSoilPH(data);
+    updateAISuggestions(data);
+    checkAutomaticAlerts(data);
+
+
+    // ==================================================
+    // TEMPERATURE
+    // ==================================================
+
+    document.getElementById("temperature")
+        .textContent =
+        numberValue(data.temperature) + " °C";
+
+
+    // ==================================================
+    // HUMIDITY
+    // ==================================================
+
+    document.getElementById("humidity")
+        .textContent =
+        numberValue(data.humidity) + " %";
+
+
+    // ==================================================
+    // SOIL MOISTURE
+    // ==================================================
+
+    document.getElementById("soilMoisture")
+        .textContent =
+        numberValue(
+            data.soilMoisture,
+            0
+        ) + " %";
+
+
+    document.getElementById("soilStatus")
+        .textContent =
+        data.soilStatus || "--";
+
+
+    // ==================================================
+    // RAIN
+    // ==================================================
+
+    const rainDetected =
+        data.rain === true ||
+        data.rain === "true" ||
+        data.rain === 1;
+
+    document.getElementById("rain")
+        .textContent =
+        rainDetected
+            ? "DETECTED"
+            : "NO RAIN";
+
+    document.getElementById("rainStatus")
+        .textContent =
+        data.rainStatus || "--";
+
+
+    // ==================================================
+    // ESP32
+    // ==================================================
+
+    document.getElementById("esp32")
+        .textContent =
+        data.esp32 || "UNKNOWN";
+
+
+    // ==================================================
+    // LAST UPDATE
+    // ==================================================
+
+    document.getElementById("lastUpdate")
+        .textContent =
+        formatTimestamp(
+            data.lastUpdate
+        );
+
+
+    // ==================================================
+    // CLOUD REFRESH
+    // ==================================================
+
+    document.getElementById("cloudRefresh")
+        .textContent =
+        new Date().toLocaleTimeString(
+            "en-IN"
+        );
+
+
+    // ==================================================
+    // ESP32 UPTIME
+    // ==================================================
+
+    document.getElementById("uptime")
+        .textContent =
+        data.esp32
+            ? "ONLINE"
+            : "--";
+
+
+    // ==================================================
+    // SYSTEM SUMMARY
+    // ==================================================
+
+    let summary = "";
+
+
+    if (rainDetected) {
+
+        summary =
+            "Rain has been detected. " +
+            "The irrigation pump is kept OFF " +
+            "to avoid unnecessary watering.";
+
+    }
+
+    else if (
+        Number(data.soilMoisture) <= 30
+    ) {
+
+        summary =
+            "Soil moisture is low. The system " +
+            "is monitoring the condition for " +
+            "automatic irrigation.";
+
+    }
+
+    else {
+
+        summary =
+            "The agriculture system is operating " +
+            "normally. Soil moisture and environmental " +
+            "conditions are being monitored.";
+
+    }
+
+
+    document.getElementById("summaryText")
+        .textContent = summary;
+
+
+    // ==================================================
+    // CONNECTION
+    // ==================================================
+
+    const firebaseTimestamp =
+        Number(data.lastUpdate);
+
+    if (
+        Number.isFinite(firebaseTimestamp) &&
+        firebaseTimestamp > 0
+    ) {
+
+        const currentTime =
+            Math.floor(
+                Date.now() / 1000
+            );
+
+        const age =
+            currentTime -
+            firebaseTimestamp;
+
+
+        /*
+          ESP32 sends data every 5 seconds.
+
+          Allow up to 20 seconds so temporary
+          Wi-Fi/Firebase delays do not immediately
+          show the system as offline.
+        */
+
+        if (
+            age >= -10 &&
+            age <= 20
+        ) {
+
+            setConnectionStatus(
+                "online"
+            );
+
+        }
+
+        else {
+
+            setConnectionStatus(
+                "offline",
+                "Firebase connected • ESP32 data old"
+            );
+
+        }
+
+    }
+
+    else {
+
+        setConnectionStatus(
+            "online"
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// READ FIREBASE
+// ======================================================
+
+async function loadFirebaseData() {
+
+    try {
+
+        setConnectionStatus(
+            "connecting",
+            "Connecting to Firebase..."
+        );
+
+
+        // ----------------------------------------------
+        // COMPLETE DATABASE URL
+        // ----------------------------------------------
+
+        const url =
+            FIREBASE_URL +
+            FIREBASE_PATH +
+            "?cacheBust=" +
+            Date.now();
+
+
+        console.log(
+            "Reading Firebase:",
+            url
+        );
+
+
+        // ----------------------------------------------
+        // FIREBASE REQUEST
+        // ----------------------------------------------
+
+        const response =
+            await fetch(
+                url,
+                {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: {
+                        "Accept":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        // ----------------------------------------------
+        // CHECK HTTP RESPONSE
+        // ----------------------------------------------
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Firebase HTTP " +
+                response.status +
+                " " +
+                response.statusText
+            );
+
+        }
+
+
+        // ----------------------------------------------
+        // READ JSON
+        // ----------------------------------------------
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Firebase data received:",
+            data
+        );
+
+
+        // ----------------------------------------------
+        // UPDATE DASHBOARD
+        // ----------------------------------------------
+
+        updateDashboard(data);
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Firebase connection error:",
+            error
+        );
+
+
+        setConnectionStatus(
+            "offline",
+            "Firebase read error"
+        );
+
+    }
+
+}
+
+
+updateNotificationButton();
+
+// ======================================================
+// INITIAL WEATHER LOAD
+// ======================================================
+
+// Always try the device's current GPS location first.
+// A saved manual location remains available through the Manual Location control.
+useAutomaticWeatherLocation();
+setInterval(loadWeather, 1800000);
+
+
+// ======================================================
+// INITIAL FIREBASE LOAD
+// ======================================================
+
+loadFirebaseData();
+
+
+// ======================================================
+// AUTOMATIC REFRESH
+// ======================================================
+//
+// ESP32 updates Firebase every 5 seconds.
+// Browser reads it every 3 seconds.
+//
+
+setInterval(
+    loadFirebaseData,
+    3000
+);
+
+
+// ======================================================
+// KEEP CLOUD REFRESH TIME UPDATED
+// ======================================================
+
+setInterval(
+    function () {
+
+        const cloudRefresh =
+            document.getElementById(
+                "cloudRefresh"
+            );
+
+        if (cloudRefresh) {
+
+            cloudRefresh.textContent =
+                new Date().toLocaleTimeString(
+                    "en-IN"
+                );
+
+        }
+
+    },
+    1000
+);
+
+
+// ======================================================
+// MULTILINGUAL FARMER INTERFACE + VOICE INSIGHTS
+// ======================================================
+const farmerLanguages = {
+  en: { name:'English', speech:'en-IN', dir:'ltr',
+    language:'Language', dashboard:'Dashboard', crops:'Crop Guide', about:'Project Information',
+    heroEyebrow:'Live IoT Agriculture Intelligence', heroTitle:'Smart Agriculture Management System',
+    heroDescription:'One elegant control surface for field conditions, environmental intelligence, smart recommendations and ESP32 health.',
+    sensorHeading:'Live Sensor Overview', sensorMeta:'REAL-TIME • ESP32 + FIREBASE', temperature:'🌡 Temperature', humidity:'💧 Humidity', moisture:'🌱 Soil Moisture', rain:'🌧 Rain Status', ph:'🧪 Soil pH',
+    environmentHeading:'Environmental Intelligence', environmentMeta:'FORECAST • AI ADVISORY', weather:'🌦 Weather Forecast', location:'Location', weatherTemp:'Temperature', rainForecast:'Rain Forecast', wind:'Wind',
+    insights:'🤖 Smart Farm Insights', advisory:'ADVISORY', voice:'🔊 Voice Farmer Insight', voiceReady:'Ready', notifications:'🔔 Farmer Notifications',
+    health:'System Health', healthMeta:'CONTROLLER • CLOUD • TIMING', esp:'📡 ESP32 Status', last:'🕒 Last ESP32 Update', uptime:'⏱ ESP32 Uptime', cloud:'☁ Cloud Refresh', summary:'System Summary',
+    cropEyebrow:'Crop Planning • Field Reference', cropTitle:'Crop Specifications', cropDescription:'Quick comparison of practical growing targets for common crops.', cropNote:'Guide values • verify with local soil tests and crop variety',
+    aboutEyebrow:'About the system', aboutTitle:'Project Information', aboutDescription:'IoT-driven monitoring with smart agricultural insights.', projectDetails:'Project Details', notificationButton:'Enable Notifications', notificationDisabled:'Notifications are disabled.',
+    voiceSpeaking:'Speaking…', voiceUnsupported:'Voice is not supported in this browser.', voiceStopped:'Voice stopped', voiceDone:'Voice insight completed', voiceUnavailable:'No voice insight is available yet.',
+    wait:'Waiting for sensor data...',
+    alerts:{low:'🌱 Soil moisture is low. Check whether irrigation is needed.', highMoisture:'💧 Soil moisture is high. Avoid unnecessary watering.', moderate:'🌱 Soil moisture is in a moderate range. Continue monitoring.', acidic:'🧪 Soil pH is acidic. Consider checking the soil before making amendments.', alkaline:'🧪 Soil pH is alkaline. Consider checking the soil before making amendments.', normalPh:'🧪 Soil pH is within the monitored range.', rain:'🌧 Rain is detected. Avoid unnecessary irrigation and monitor soil moisture.', hot:'🌡 Temperature is high. Monitor crops and soil moisture closely.', humid:'💧 Humidity is high. Monitor crops for moisture-related problems.', waiting:'Waiting for valid sensor readings to generate suggestions.'}
+  },
+  hi: { name:'हिन्दी', speech:'hi-IN', dir:'ltr', language:'भाषा', dashboard:'डैशबोर्ड', crops:'फसल गाइड', about:'परियोजना जानकारी',
+    heroEyebrow:'लाइव IoT कृषि इंटेलिजेंस', heroTitle:'स्मार्ट कृषि प्रबंधन प्रणाली', heroDescription:'खेत की स्थिति, मौसम, स्मार्ट सुझाव और ESP32 स्वास्थ्य की एकीकृत निगरानी।', sensorHeading:'लाइव सेंसर अवलोकन', sensorMeta:'रीयल-टाइम • ESP32 + FIREBASE', temperature:'🌡 तापमान', humidity:'💧 नमी', moisture:'🌱 मिट्टी की नमी', rain:'🌧 वर्षा स्थिति', ph:'🧪 मिट्टी का pH',
+    environmentHeading:'पर्यावरणीय जानकारी', environmentMeta:'पूर्वानुमान • AI सलाह', weather:'🌦 मौसम पूर्वानुमान', location:'स्थान', weatherTemp:'तापमान', rainForecast:'वर्षा पूर्वानुमान', wind:'हवा', insights:'🤖 स्मार्ट फार्म सुझाव', advisory:'सलाह', voice:'🔊 किसान आवाज़ सुझाव', voiceReady:'तैयार', notifications:'🔔 किसान सूचनाएँ',
+    health:'सिस्टम स्वास्थ्य', healthMeta:'कंट्रोलर • क्लाउड • समय', esp:'📡 ESP32 स्थिति', last:'🕒 अंतिम ESP32 अपडेट', uptime:'⏱ ESP32 अपटाइम', cloud:'☁ क्लाउड रिफ्रेश', summary:'सिस्टम सारांश', cropEyebrow:'फसल योजना • खेत संदर्भ', cropTitle:'फसल विनिर्देश', cropDescription:'सामान्य फसलों के लिए व्यावहारिक बढ़वार लक्ष्यों की त्वरित तुलना।', cropNote:'मार्गदर्शक मान • स्थानीय मिट्टी और किस्म के अनुसार सत्यापित करें', aboutEyebrow:'सिस्टम के बारे में', aboutTitle:'परियोजना जानकारी', aboutDescription:'स्मार्ट कृषि सुझावों के साथ IoT आधारित निगरानी।', projectDetails:'परियोजना विवरण', notificationButton:'सूचनाएँ सक्षम करें', notificationDisabled:'सूचनाएँ बंद हैं।',
+    voiceSpeaking:'बोला जा रहा है…', voiceUnsupported:'इस ब्राउज़र में आवाज़ सुविधा उपलब्ध नहीं है।', voiceStopped:'आवाज़ रोक दी गई', voiceDone:'आवाज़ सुझाव पूरा हुआ', voiceUnavailable:'अभी कोई आवाज़ सुझाव उपलब्ध नहीं है।', wait:'सेंसर डेटा की प्रतीक्षा…',
+    alerts:{low:'🌱 मिट्टी की नमी कम है। सिंचाई की आवश्यकता जाँचें।', highMoisture:'💧 मिट्टी की नमी अधिक है। अनावश्यक पानी न दें।', moderate:'🌱 मिट्टी की नमी मध्यम है। निगरानी जारी रखें।', acidic:'🧪 मिट्टी अम्लीय है। सुधार करने से पहले मिट्टी की जाँच करें।', alkaline:'🧪 मिट्टी क्षारीय है। सुधार करने से पहले मिट्टी की जाँच करें।', normalPh:'🧪 मिट्टी का pH निगरानी सीमा में है।', rain:'🌧 बारिश हो रही है। अनावश्यक सिंचाई से बचें और मिट्टी की नमी देखें।', hot:'🌡 तापमान अधिक है। फसल और मिट्टी की नमी पर ध्यान दें।', humid:'💧 नमी अधिक है। फसल की स्थिति पर ध्यान दें।', waiting:'मान्य सेंसर रीडिंग से सुझाव बनाने की प्रतीक्षा है।'}
+  },
+  ur: { name:'اردو', speech:'ur-PK', dir:'rtl', language:'زبان', dashboard:'ڈیش بورڈ', crops:'فصل گائیڈ', about:'پروجیکٹ کی معلومات',
+    heroEyebrow:'لائیو IoT زرعی معلومات', heroTitle:'اسمارٹ زرعی انتظامی نظام', heroDescription:'کھیت کی صورتحال، موسم، اسمارٹ مشوروں اور ESP32 صحت کی مربوط نگرانی۔', sensorHeading:'لائیو سینسر جائزہ', sensorMeta:'ریئل ٹائم • ESP32 + FIREBASE', temperature:'🌡 درجہ حرارت', humidity:'💧 نمی', moisture:'🌱 مٹی کی نمی', rain:'🌧 بارش کی صورتحال', ph:'🧪 مٹی کا pH',
+    environmentHeading:'ماحولیاتی معلومات', environmentMeta:'موسم • AI مشورہ', weather:'🌦 موسم کی پیش گوئی', location:'مقام', weatherTemp:'درجہ حرارت', rainForecast:'بارش کی پیش گوئی', wind:'ہوا', insights:'🤖 اسمارٹ فارم مشورے', advisory:'مشورہ', voice:'🔊 کسان کے لیے صوتی مشورہ', voiceReady:'تیار', notifications:'🔔 کسان اطلاعات',
+    health:'نظام کی صحت', healthMeta:'کنٹرولر • کلاؤڈ • وقت', esp:'📡 ESP32 صورتحال', last:'🕒 آخری ESP32 اپ ڈیٹ', uptime:'⏱ ESP32 اپ ٹائم', cloud:'☁ کلاؤڈ ریفریش', summary:'نظام کا خلاصہ', cropEyebrow:'فصل کی منصوبہ بندی • کھیت حوالہ', cropTitle:'فصل کی خصوصیات', cropDescription:'عام فصلوں کے لیے عملی افزائش کے اہداف کا فوری موازنہ۔', cropNote:'رہنمائی کی قدریں • مقامی مٹی اور قسم کے مطابق تصدیق کریں', aboutEyebrow:'نظام کے بارے میں', aboutTitle:'پروجیکٹ کی معلومات', aboutDescription:'اسمارٹ زرعی مشوروں کے ساتھ IoT پر مبنی نگرانی۔', projectDetails:'پروجیکٹ کی تفصیلات', notificationButton:'اطلاعات فعال کریں', notificationDisabled:'اطلاعات بند ہیں۔',
+    voiceSpeaking:'آواز چل رہی ہے…', voiceUnsupported:'اس براؤزر میں آواز کی سہولت دستیاب نہیں۔', voiceStopped:'آواز روک دی گئی', voiceDone:'صوتی مشورہ مکمل ہوا', voiceUnavailable:'ابھی کوئی صوتی مشورہ دستیاب نہیں۔', wait:'سینسر ڈیٹا کا انتظار ہے…',
+    alerts:{low:'🌱 مٹی کی نمی کم ہے۔ آبپاشی کی ضرورت چیک کریں۔', highMoisture:'💧 مٹی کی نمی زیادہ ہے۔ غیر ضروری پانی نہ دیں۔', moderate:'🌱 مٹی کی نمی مناسب ہے۔ نگرانی جاری رکھیں۔', acidic:'🧪 مٹی تیزابی ہے۔ اصلاح سے پہلے مٹی کی جانچ کریں۔', alkaline:'🧪 مٹی الکلائن ہے۔ اصلاح سے پہلے مٹی کی جانچ کریں۔', normalPh:'🧪 مٹی کا pH نگرانی کی حد میں ہے۔', rain:'🌧 بارش ہو رہی ہے۔ غیر ضروری آبپاشی سے بچیں۔', hot:'🌡 درجہ حرارت زیادہ ہے۔ فصل اور مٹی کی نمی پر نظر رکھیں۔', humid:'💧 نمی زیادہ ہے۔ فصل کی صورتحال پر نظر رکھیں۔', waiting:'درست سینسر ریڈنگ سے مشورہ بنانے کا انتظار ہے۔'}
+  },
+  ks: { name:'Kashmiri', speech:'ks-IN', dir:'rtl', language:'زبان', dashboard:'Dashboard', crops:'فصل گائیڈ', about:'Project Information',
+    heroEyebrow:'Live IoT زرٕعی معلومات', heroTitle:'سمارٹ زرٕعی انتظامی نظام', heroDescription:'کھیتچ حالت، موسم، سمارٹ صلاح تہ ESP32 صحت ہُند کُنٹرول۔', sensorHeading:'لائیو سینسر جائزہ', sensorMeta:'ریئل ٹائم • ESP32 + FIREBASE', temperature:'🌡 درجہ حرارت', humidity:'💧 نمی', moisture:'🌱 مٹی نمی', rain:'🌧 بارش حالت', ph:'🧪 مٹی pH',
+    environmentHeading:'ماحولیاتی معلومات', environmentMeta:'موسم • AI صلاح', weather:'🌦 موسم پیش گوئی', location:'جگہ', weatherTemp:'درجہ حرارت', rainForecast:'بارش پیش گوئی', wind:'ہوا', insights:'🤖 سمارٹ فارم صلاح', advisory:'صلاح', voice:'🔊 کسان صوتی صلاح', voiceReady:'تیار', notifications:'🔔 کسان اطلاع',
+    health:'نظام صحت', healthMeta:'کنٹرولر • کلاؤڈ • وقت', esp:'📡 ESP32 حالت', last:'🕒 آخری ESP32 اپ ڈیٹ', uptime:'⏱ ESP32 اپ ٹائم', cloud:'☁ کلاؤڈ ریفریش', summary:'نظام خلاصہ', cropEyebrow:'فصل منصوبہ بندی • کھیت حوالہ', cropTitle:'فصل خصوصیات', cropDescription:'عام فصلن ہن عملی اگاوٕ اہداف ہند مختصر موازنہ۔', cropNote:'رہنمائی قدریں • مقامی مٹی تہ قسم مطابق تصدیق کریو', aboutEyebrow:'نظام متعلق', aboutTitle:'پروجیکٹ معلومات', aboutDescription:'سمارٹ زرعی صلاح سۭتھ IoT نگرانی۔', projectDetails:'پروجیکٹ تفصیل', notificationButton:'اطلاع فعال کریو', notificationDisabled:'اطلاع بند چھ۔',
+    voiceSpeaking:'آواز چل رہی ہے…', voiceUnsupported:'یِم براؤزر منز آواز سہولت دستیاب چھ نہ۔', voiceStopped:'آواز بند', voiceDone:'صوتی صلاح مکمل', voiceUnavailable:'فی الحال کوئی صوتی صلاح دستیاب چھ نہ۔', wait:'سینسر ڈیٹا ہُند انتظار…',
+    alerts:{low:'🌱 مٹی نمی کم چھ۔ آبپاشی ضرورت چیک کریو۔', highMoisture:'💧 مٹی نمی زیادٕ چھ۔ غیر ضروری پانی نہ دِیو۔', moderate:'🌱 مٹی نمی مناسب چھ۔ نگرانی جاری تھاویو۔', acidic:'🧪 مٹی تیزابی چھ۔ تبدیلی کرنہ پَتہ مٹی چیک کریو۔', alkaline:'🧪 مٹی الکلائن چھ۔ تبدیلی کرنہ پَتہ مٹی چیک کریو۔', normalPh:'🧪 مٹی pH نگرانی حدس منز چھ۔', rain:'🌧 بارش چھ۔ غیر ضروری آبپاشی سۭتھ بچیو۔', hot:'🌡 درجہ حرارت زیادٕ چھ۔ فصل تہ مٹی نمی پَر نظر تھاویو۔', humid:'💧 نمی زیادٕ چھ۔ فصل حالت پَر نظر تھاویو۔', waiting:'صحیح سینسر ریڈنگس سۭتھ صلاح بناون ہُند انتظار چھ۔'}
+  },
+  pa: { name:'ਪੰਜਾਬੀ', speech:'pa-IN', dir:'ltr', language:'ਭਾਸ਼ਾ', dashboard:'ਡੈਸ਼ਬੋਰਡ', crops:'ਫਸਲ ਗਾਈਡ', about:'ਪ੍ਰੋਜੈਕਟ ਜਾਣਕਾਰੀ',
+    heroEyebrow:'ਲਾਈਵ IoT ਖੇਤੀਬਾੜੀ ਜਾਣਕਾਰੀ', heroTitle:'ਸਮਾਰਟ ਖੇਤੀਬਾੜੀ ਪ੍ਰਬੰਧਨ ਪ੍ਰਣਾਲੀ', heroDescription:'ਖੇਤ ਦੀ ਸਥਿਤੀ, ਮੌਸਮ, ਸਮਾਰਟ ਸੁਝਾਅ ਅਤੇ ESP32 ਸਿਹਤ ਦੀ ਨਿਗਰਾਨੀ।', sensorHeading:'ਲਾਈਵ ਸੈਂਸਰ ਝਲਕ', sensorMeta:'ਰੀਅਲ-ਟਾਈਮ • ESP32 + FIREBASE', temperature:'🌡 ਤਾਪਮਾਨ', humidity:'💧 ਨਮੀ', moisture:'🌱 ਮਿੱਟੀ ਦੀ ਨਮੀ', rain:'🌧 ਮੀਂਹ ਦੀ ਸਥਿਤੀ', ph:'🧪 ਮਿੱਟੀ pH',
+    environmentHeading:'ਵਾਤਾਵਰਣ ਜਾਣਕਾਰੀ', environmentMeta:'ਪੂਰਵ ਅਨੁਮਾਨ • AI ਸਲਾਹ', weather:'🌦 ਮੌਸਮ ਪੂਰਵ ਅਨੁਮਾਨ', location:'ਸਥਾਨ', weatherTemp:'ਤਾਪਮਾਨ', rainForecast:'ਮੀਂਹ ਪੂਰਵ ਅਨੁਮਾਨ', wind:'ਹਵਾ', insights:'🤖 ਸਮਾਰਟ ਫਾਰਮ ਸੁਝਾਅ', advisory:'ਸਲਾਹ', voice:'🔊 ਕਿਸਾਨ ਆਵਾਜ਼ ਸੁਝਾਅ', voiceReady:'ਤਿਆਰ', notifications:'🔔 ਕਿਸਾਨ ਸੂਚਨਾਵਾਂ',
+    health:'ਸਿਸਟਮ ਸਿਹਤ', healthMeta:'ਕੰਟਰੋਲਰ • ਕਲਾਉਡ • ਸਮਾਂ', esp:'📡 ESP32 ਸਥਿਤੀ', last:'🕒 ਆਖਰੀ ESP32 ਅੱਪਡੇਟ', uptime:'⏱ ESP32 ਅਪਟਾਈਮ', cloud:'☁ ਕਲਾਉਡ ਰਿਫ੍ਰੈਸ਼', summary:'ਸਿਸਟਮ ਸਾਰ', cropEyebrow:'ਫਸਲ ਯੋਜਨਾ • ਖੇਤ ਹਵਾਲਾ', cropTitle:'ਫਸਲ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ', cropDescription:'ਆਮ ਫਸਲਾਂ ਲਈ ਵਿਹਾਰਕ ਵਾਧੇ ਦੇ ਟੀਚਿਆਂ ਦੀ ਤੁਰੰਤ ਤੁਲਨਾ।', cropNote:'ਗਾਈਡ ਮੁੱਲ • ਸਥਾਨਕ ਮਿੱਟੀ ਅਤੇ ਕਿਸਮ ਨਾਲ ਪੁਸ਼ਟੀ ਕਰੋ', aboutEyebrow:'ਸਿਸਟਮ ਬਾਰੇ', aboutTitle:'ਪ੍ਰੋਜੈਕਟ ਜਾਣਕਾਰੀ', aboutDescription:'ਸਮਾਰਟ ਖੇਤੀਬਾੜੀ ਸੁਝਾਵਾਂ ਨਾਲ IoT ਨਿਗਰਾਨੀ।', projectDetails:'ਪ੍ਰੋਜੈਕਟ ਵੇਰਵੇ', notificationButton:'ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਕਰੋ', notificationDisabled:'ਸੂਚਨਾਵਾਂ ਬੰਦ ਹਨ।',
+    voiceSpeaking:'ਬੋਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…', voiceUnsupported:'ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਆਵਾਜ਼ ਸਹੂਲਤ ਉਪਲਬਧ ਨਹੀਂ।', voiceStopped:'ਆਵਾਜ਼ ਰੋਕੀ ਗਈ', voiceDone:'ਆਵਾਜ਼ ਸੁਝਾਅ ਪੂਰਾ ਹੋਇਆ', voiceUnavailable:'ਹਾਲੇ ਕੋਈ ਆਵਾਜ਼ ਸੁਝਾਅ ਉਪਲਬਧ ਨਹੀਂ।', wait:'ਸੈਂਸਰ ਡਾਟਾ ਦੀ ਉਡੀਕ…',
+    alerts:{low:'🌱 ਮਿੱਟੀ ਦੀ ਨਮੀ ਘੱਟ ਹੈ। ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਜਾਂਚੋ।', highMoisture:'💧 ਮਿੱਟੀ ਦੀ ਨਮੀ ਜ਼ਿਆਦਾ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਪਾਣੀ ਨਾ ਦਿਓ।', moderate:'🌱 ਮਿੱਟੀ ਦੀ ਨਮੀ ਦਰਮਿਆਨੀ ਹੈ। ਨਿਗਰਾਨੀ ਜਾਰੀ ਰੱਖੋ।', acidic:'🧪 ਮਿੱਟੀ ਤੇਜ਼ਾਬੀ ਹੈ। ਸੋਧ ਤੋਂ ਪਹਿਲਾਂ ਮਿੱਟੀ ਦੀ ਜਾਂਚ ਕਰੋ।', alkaline:'🧪 ਮਿੱਟੀ ਖਾਰੀ ਹੈ। ਸੋਧ ਤੋਂ ਪਹਿਲਾਂ ਮਿੱਟੀ ਦੀ ਜਾਂਚ ਕਰੋ।', normalPh:'🧪 ਮਿੱਟੀ ਦਾ pH ਨਿਗਰਾਨੀ ਸੀਮਾ ਵਿੱਚ ਹੈ।', rain:'🌧 ਮੀਂਹ ਪੈ ਰਿਹਾ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਸਿੰਚਾਈ ਤੋਂ ਬਚੋ।', hot:'🌡 ਤਾਪਮਾਨ ਜ਼ਿਆਦਾ ਹੈ। ਫਸਲ ਅਤੇ ਮਿੱਟੀ ਦੀ ਨਮੀ ਉੱਤੇ ਨਿਗਰਾਨੀ ਰੱਖੋ।', humid:'💧 ਨਮੀ ਜ਼ਿਆਦਾ ਹੈ। ਫਸਲ ਦੀ ਸਥਿਤੀ ਵੇਖੋ।', waiting:'ਮਾਨਯੋਗ ਸੈਂਸਰ ਰੀਡਿੰਗ ਨਾਲ ਸੁਝਾਅ ਬਣਾਉਣ ਦੀ ਉਡੀਕ ਹੈ।'}
+  }
+};
+
+let currentFarmerLanguage = localStorage.getItem('farmerLanguage') || 'en';
+let lastFarmerInsights = [];
+
+function setText(id, value){ const el=document.getElementById(id); if(el) el.textContent=value; }
+function setInterfaceLanguage(lang){
+  if(!farmerLanguages[lang]) lang='en';
+  currentFarmerLanguage=lang; localStorage.setItem('farmerLanguage',lang);
+  const t=farmerLanguages[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  setText('languageLabel',t.language); setText('navDashboard',t.dashboard); setText('navCrops',t.crops); setText('navAbout',t.about);
+  setText('heroEyebrow',t.heroEyebrow); setText('heroTitle',t.heroTitle); setText('heroDescription',t.heroDescription);
+  setText('sensorHeading',t.sensorHeading); setText('sensorMeta',t.sensorMeta); setText('labelTemperature',t.temperature); setText('labelHumidity',t.humidity); setText('labelSoilMoisture',t.moisture); setText('labelRain',t.rain); setText('labelPH',t.ph);
+  setText('environmentHeading',t.environmentHeading); setText('environmentMeta',t.environmentMeta); setText('weatherHeading',t.weather); setText('weatherLabelLocation',t.location); setText('weatherLabelTemperature',t.weatherTemp); setText('weatherLabelRain',t.rainForecast); setText('weatherLabelHumidity',t.humidity); setText('weatherLabelWind',t.wind);
+  setText('insightsHeading',t.insights); setText('advisoryLabel',t.advisory); setText('notificationHeading',t.notifications); setText('notificationStatus',t.notificationDisabled); setText('healthHeading',t.health); setText('healthMeta',t.healthMeta); setText('labelESP',t.esp); setText('labelLastUpdate',t.last); setText('labelUptime',t.uptime); setText('labelCloud',t.cloud); setText('summaryHeading',t.summary);
+  setText('cropEyebrow',t.cropEyebrow); setText('cropTitle',t.cropTitle); setText('cropDescription',t.cropDescription); setText('cropNote',t.cropNote); setText('aboutEyebrow',t.aboutEyebrow); setText('aboutTitle',t.aboutTitle); setText('aboutDescription',t.aboutDescription); setText('projectDetailsHeading',t.projectDetails);
+  const voice=document.getElementById('voiceInsightButton'); if(voice) voice.textContent=t.voice;
+  const vs=document.getElementById('voiceStatus'); if(vs && !speechSynthesis.speaking) vs.textContent=t.voiceReady;
+  const sel=document.getElementById('languageSelect'); if(sel) sel.value=lang;
+  translateCropTable(t); updateAISuggestions(window.latestFirebaseData || null);
+}
+function translateCropTable(t){
+  const headers=document.querySelectorAll('#crops .crop-table th');
+  const h=[t.crops==='Crop Guide'?'Crop':(currentFarmerLanguage==='hi'?'फसल':currentFarmerLanguage==='ur'?'فصل':currentFarmerLanguage==='ks'?'فصل':currentFarmerLanguage==='pa'?'ਫਸਲ':'Crop'),t.temperature.replace(/^[^ ]+ /,''),t.moisture.replace(/^[^ ]+ /,''),currentFarmerLanguage==='hi'?'पसंदीदा pH':currentFarmerLanguage==='ur'?'ترجیحی pH':currentFarmerLanguage==='ks'?'پسندیدہ pH':currentFarmerLanguage==='pa'?'ਪਸੰਦੀਦਾ pH':'Preferred pH',t.humidity,t.rainForecast,t.crops==='Crop Guide'?'Typical Season':currentFarmerLanguage==='hi'?'सामान्य मौसम':currentFarmerLanguage==='ur'?'عام موسم':currentFarmerLanguage==='ks'?'عام موسم':currentFarmerLanguage==='pa'?'ਆਮ ਮੌਸਮ':'Typical Season',currentFarmerLanguage==='hi'?'मुख्य आवश्यकता':currentFarmerLanguage==='ur'?'اہم ضرورت':currentFarmerLanguage==='ks'?'اہم ضرورت':currentFarmerLanguage==='pa'?'ਮੁੱਖ ਲੋੜ':'Key Requirement'];
+  headers.forEach((el,i)=>{if(h[i])el.textContent=h[i]});
+}
+function speakFarmerInsights(){
+  const t=farmerLanguages[currentFarmerLanguage];
+  if(!('speechSynthesis' in window)){ setText('voiceStatus',t.voiceUnsupported); return; }
+  if(!lastFarmerInsights.length){ setText('voiceStatus',t.voiceUnavailable); return; }
+  window.speechSynthesis.cancel();
+  const text=lastFarmerInsights.join(' ');
+  const utter=new SpeechSynthesisUtterance(text); utter.lang=t.speech; utter.rate=0.9; utter.pitch=1;
+  const voices=window.speechSynthesis.getVoices(); const base=t.speech.split('-')[0].toLowerCase(); let preferred=voices.find(v=>v.lang.toLowerCase().startsWith(base)); if(!preferred && currentFarmerLanguage==='ks') preferred=voices.find(v=>v.lang.toLowerCase().startsWith('ur')); if(!preferred && currentFarmerLanguage==='ks') preferred=voices.find(v=>v.lang.toLowerCase().startsWith('hi')); if(preferred) utter.voice=preferred;
+  utter.onstart=()=>setText('voiceStatus',t.voiceSpeaking); utter.onend=()=>setText('voiceStatus',t.voiceDone); utter.onerror=()=>setText('voiceStatus',t.voiceUnsupported);
+  window.speechSynthesis.speak(utter);
+}
+
+// Combined farm-judgment engine.
+// It considers field sensors and the complete weather context together, then returns ONE result.
+window.latestFirebaseData=null;
+window.latestWeatherData=window.latestWeatherData||null;
+
+updateAISuggestions=function(data){
+  window.latestFirebaseData=data||null;
+  const container=document.getElementById('aiSuggestions'); if(!container) return;
+
+  const moisture=Number(data&&data.soilMoisture);
+  const ph=Number(data&&data.pH);
+  const sensorTemp=Number(data&&data.temperature);
+  const sensorHumidity=Number(data&&data.humidity);
+  const rainDetected=!!(data&&(data.rain===true||data.rain==='true'||data.rain===1||Number(data.rain)===1));
+  const weather=window.latestWeatherData||{};
+  const forecastTemp=Number(weather.temperature);
+  const forecastHumidity=Number(weather.humidity);
+  const wind=Number(weather.wind);
+  const rainToday=Number(weather.rainToday);
+  const rainMax3=Number(weather.rainMaxNext3Days);
+
+  const temps=[sensorTemp,forecastTemp].filter(Number.isFinite);
+  const humidities=[sensorHumidity,forecastHumidity].filter(Number.isFinite);
+  const maxTemp=temps.length?Math.max.apply(null,temps):NaN;
+  const maxHumidity=humidities.length?Math.max.apply(null,humidities):NaN;
+
+  const rainLikelyToday=Number.isFinite(rainToday)&&rainToday>=60;
+  const rainPossibleToday=Number.isFinite(rainToday)&&rainToday>=30;
+  const strongRainRisk=Number.isFinite(rainToday)&&rainToday>=80;
+  const rainSoon=Number.isFinite(rainMax3)&&rainMax3>=60;
+  const dryForecast=Number.isFinite(rainToday)&&rainToday<30;
+
+  const extremeHeat=Number.isFinite(maxTemp)&&maxTemp>=38;
+  const highHeat=Number.isFinite(maxTemp)&&maxTemp>=35;
+  const cool=Number.isFinite(maxTemp)&&maxTemp<20;
+  const veryHumid=Number.isFinite(maxHumidity)&&maxHumidity>=85;
+  const strongWind=Number.isFinite(wind)&&wind>=30;
+  const veryStrongWind=Number.isFinite(wind)&&wind>=45;
+
+  // IMPORTANT: Firebase data is used exactly as before.
+  // Only the final farmer-facing sentence is localized here.
+  let insightKey='waiting';
+
+  if(!Number.isFinite(moisture) && !Number.isFinite(ph) && !Number.isFinite(sensorTemp) &&
+     !Number.isFinite(sensorHumidity) && !rainDetected){
+    insightKey='waiting';
+  }
+  else if(rainDetected && Number.isFinite(moisture) && moisture>=70){
+    insightKey='rainHighMoisture';
+  }
+  else if((strongRainRisk||rainLikelyToday||rainDetected) && Number.isFinite(moisture) && moisture<=35){
+    insightKey='rainLowMoisture';
+  }
+  else if(Number.isFinite(moisture) && moisture>=80){
+    insightKey='veryHighMoisture';
+  }
+  else if(Number.isFinite(moisture) && moisture>=70 && (veryHumid||rainSoon)){
+    insightKey='highMoistureRainRisk';
+  }
+  else if(Number.isFinite(moisture) && moisture<=25 && dryForecast && (extremeHeat||veryStrongWind)){
+    insightKey='criticalDry';
+  }
+  else if(Number.isFinite(moisture) && moisture<=35 && dryForecast && highHeat){
+    insightKey='irrigateHeat';
+  }
+  else if(Number.isFinite(moisture) && moisture<=35 && dryForecast && strongWind){
+    insightKey='irrigateWind';
+  }
+  else if(Number.isFinite(moisture) && moisture<=35 && dryForecast){
+    insightKey='irrigate';
+  }
+  else if(Number.isFinite(moisture) && moisture<=35 && rainPossibleToday){
+    insightKey='lowMoistureRainPossible';
+  }
+  else if(Number.isFinite(moisture) && moisture<=55 && extremeHeat && !rainLikelyToday){
+    insightKey='highDemand';
+  }
+  else if(Number.isFinite(moisture) && moisture<=55 && highHeat && !rainLikelyToday){
+    insightKey='highDemand';
+  }
+  else if(Number.isFinite(moisture) && moisture<=55 && rainDetected){
+    insightKey='rainHelping';
+  }
+  else if(Number.isFinite(moisture) && moisture<=55 && strongRainRisk){
+    insightKey='rainExpected';
+  }
+  else if(Number.isFinite(moisture) && moisture>55 && moisture<75 && veryHumid){
+    insightKey='adequateHumid';
+  }
+  else if(Number.isFinite(moisture) && moisture>55 && moisture<75 && strongWind && !rainLikelyToday){
+    insightKey='adequateWind';
+  }
+  else if(Number.isFinite(moisture) && moisture>55 && moisture<75){
+    insightKey='adequate';
+  }
+  else if(Number.isFinite(moisture) && moisture>35 && moisture<=55 && cool){
+    insightKey='moderateCool';
+  }
+  else if(rainDetected||rainLikelyToday){
+    insightKey='rainGeneral';
+  }
+  else if(extremeHeat&&!rainLikelyToday){
+    insightKey='extremeHeat';
+  }
+  else if(veryHumid){
+    insightKey='highHumidity';
+  }
+  else if(veryStrongWind){
+    insightKey='strongWind';
+  }
+  else if(Number.isFinite(ph)&&(ph<5.5||ph>8.0)){
+    insightKey='abnormalPh';
+  }
+  else if(Number.isFinite(ph)){
+    insightKey='normal';
+  }
+
+  const t=farmerLanguages[currentFarmerLanguage]||farmerLanguages.en;
+
+  const localizedInsights = {
+    en:{
+      waiting:'Waiting for valid field and weather information to generate an overall farm judgment.',
+      rainHighMoisture:'Do not irrigate now. Rain is already detected and soil moisture is high, so additional water could create excess moisture. Monitor drainage and the crop condition.',
+      rainLowMoisture:'Delay irrigation for now because rain is occurring or strongly expected. Soil moisture is low, but natural rainfall may supply the needed water. Recheck the field after the weather event.',
+      veryHighMoisture:'Do not irrigate. Soil moisture is already very high, so additional watering is unnecessary. Watch for waterlogging and moisture-related crop stress.',
+      highMoistureRainRisk:'Avoid irrigation. Soil moisture is high and the weather also supports further moisture, so adding water could increase waterlogging or moisture-related crop risk.',
+      criticalDry:'Irrigation is likely needed soon. Soil moisture is critically low and the forecast indicates dry conditions with high crop water demand. Irrigate carefully and recheck soil moisture afterward.',
+      irrigateHeat:'Irrigation is likely needed. Soil moisture is low, rain is unlikely, and temperature is increasing crop water demand. Check the field and irrigate according to the crop requirement.',
+      irrigateWind:'Irrigation may be needed, but strong wind can increase water loss. Confirm the field first and prefer a calmer period for irrigation.',
+      irrigate:'Irrigation may be needed. Soil moisture is low and rain is unlikely, so check the field and water according to crop requirement.',
+      lowMoistureRainPossible:'Soil moisture is low, but some rain is possible. Monitor the field before irrigating and avoid unnecessary watering if rainfall begins.',
+      highDemand:'Crop water demand is high. Soil moisture is not yet critically low, but hot weather can dry the field quickly. Monitor closely and prepare for irrigation if moisture falls.',
+      rainHelping:'Rain is currently helping field water availability. Do not add irrigation immediately; reassess soil moisture after the rainfall.',
+      rainExpected:'Rain is strongly expected. Hold unnecessary irrigation and reassess soil moisture after the forecast rain.',
+      adequateHumid:'Overall water conditions are adequate, but high humidity increases moisture-related crop risk. Avoid unnecessary irrigation and monitor the crop and soil closely.',
+      adequateWind:'Soil moisture is currently adequate, but strong wind may increase water loss. Continue monitoring and reassess irrigation if moisture declines.',
+      adequate:'Overall water conditions are suitable for normal monitoring. Soil moisture is adequate and the current weather does not indicate an immediate need for irrigation.',
+      moderateCool:'Soil moisture is moderate and temperatures are relatively cool, so immediate irrigation is not indicated. Continue monitoring the field and weather.',
+      rainGeneral:'Rain is occurring or strongly expected, so avoid unnecessary irrigation and reassess soil moisture after the weather event.',
+      extremeHeat:'Weather conditions indicate high crop water demand because of extreme heat. Monitor soil moisture closely and be prepared to irrigate if the field begins to dry.',
+      highHumidity:'High humidity increases moisture-related crop risk. Avoid unnecessary irrigation and monitor the crop and soil condition closely.',
+      strongWind:'Strong wind may increase evaporation and irrigation losses. Monitor soil moisture closely and avoid unnecessary watering during the strongest winds.',
+      abnormalPh:'Overall field conditions are suitable for monitoring, but soil pH is outside the monitored range. Check the soil before applying amendments.',
+      normal:'Overall field conditions are suitable for normal monitoring. Soil moisture and current weather do not indicate an immediate irrigation requirement.'
+    },
+    hi:{
+      waiting:'सही खेत और मौसम की जानकारी से समग्र कृषि सलाह बनाने की प्रतीक्षा है।',
+      rainHighMoisture:'अभी सिंचाई न करें। बारिश हो रही है और मिट्टी की नमी अधिक है, इसलिए अतिरिक्त पानी से जलभराव हो सकता है। जल निकासी और फसल की स्थिति देखें।',
+      rainLowMoisture:'अभी सिंचाई थोड़ी देर रोकें क्योंकि बारिश हो रही है या तेज बारिश की संभावना है। मिट्टी की नमी कम है, लेकिन बारिश से पानी मिल सकता है। बारिश के बाद खेत फिर जाँचें।',
+      veryHighMoisture:'सिंचाई न करें। मिट्टी की नमी बहुत अधिक है। जलभराव और फसल पर अधिक नमी के प्रभाव पर नजर रखें।',
+      highMoistureRainRisk:'सिंचाई से बचें। मिट्टी की नमी अधिक है और मौसम में भी नमी बढ़ने की संभावना है। अतिरिक्त पानी से जलभराव का जोखिम बढ़ सकता है।',
+      criticalDry:'जल्द सिंचाई की आवश्यकता हो सकती है। मिट्टी की नमी बहुत कम है और मौसम शुष्क तथा फसल की पानी की मांग अधिक है। सावधानी से सिंचाई करें और बाद में नमी फिर जाँचें।',
+      irrigateHeat:'सिंचाई की आवश्यकता हो सकती है। मिट्टी की नमी कम है, बारिश की संभावना कम है और तापमान अधिक है। खेत की जाँच करके फसल की आवश्यकता के अनुसार पानी दें।',
+      irrigateWind:'सिंचाई की आवश्यकता हो सकती है, लेकिन तेज हवा पानी की हानि बढ़ा सकती है। पहले खेत की जाँच करें और हवा कम होने पर सिंचाई करना बेहतर है।',
+      irrigate:'सिंचाई की आवश्यकता हो सकती है। मिट्टी की नमी कम है और बारिश की संभावना कम है। खेत की जाँच करके फसल की आवश्यकता के अनुसार पानी दें।',
+      lowMoistureRainPossible:'मिट्टी की नमी कम है, लेकिन कुछ बारिश की संभावना है। सिंचाई से पहले खेत की निगरानी करें और बारिश शुरू होने पर अनावश्यक पानी न दें।',
+      highDemand:'फसल की पानी की मांग अधिक है। मिट्टी की नमी अभी बहुत कम नहीं है, लेकिन गर्म मौसम से खेत जल्दी सूख सकता है। नमी पर नजर रखें।',
+      rainHelping:'बारिश से खेत को पानी मिल रहा है। तुरंत सिंचाई न करें; बारिश के बाद मिट्टी की नमी फिर जाँचें।',
+      rainExpected:'तेज बारिश की संभावना है। अनावश्यक सिंचाई रोकें और बारिश के बाद मिट्टी की नमी फिर जाँचें।',
+      adequateHumid:'पानी की स्थिति पर्याप्त है, लेकिन अधिक नमी से फसल में नमी संबंधी जोखिम बढ़ सकता है। अनावश्यक सिंचाई से बचें।',
+      adequateWind:'मिट्टी की नमी अभी पर्याप्त है, लेकिन तेज हवा पानी की हानि बढ़ा सकती है। निगरानी जारी रखें।',
+      adequate:'कुल मिलाकर पानी की स्थिति सामान्य है। मिट्टी की नमी पर्याप्त है और अभी तुरंत सिंचाई की आवश्यकता नहीं दिखती।',
+      moderateCool:'मिट्टी की नमी मध्यम है और तापमान अपेक्षाकृत कम है, इसलिए अभी सिंचाई की आवश्यकता नहीं दिखती।',
+      rainGeneral:'बारिश हो रही है या तेज बारिश की संभावना है। अनावश्यक सिंचाई से बचें और बारिश के बाद मिट्टी की नमी जाँचें।',
+      extremeHeat:'बहुत अधिक गर्मी के कारण फसल की पानी की मांग अधिक है। मिट्टी की नमी पर नजर रखें और खेत सूखने पर सिंचाई के लिए तैयार रहें।',
+      highHumidity:'अधिक नमी से फसल संबंधी जोखिम बढ़ सकता है। अनावश्यक सिंचाई से बचें और फसल तथा मिट्टी की निगरानी करें।',
+      strongWind:'तेज हवा वाष्पीकरण और सिंचाई में पानी की हानि बढ़ा सकती है। मिट्टी की नमी पर नजर रखें।',
+      abnormalPh:'खेत की स्थिति सामान्य निगरानी के लिए ठीक है, लेकिन मिट्टी का pH निगरानी सीमा से बाहर है। सुधार करने से पहले मिट्टी की जाँच करें।',
+      normal:'कुल मिलाकर खेत की स्थिति सामान्य निगरानी के लिए ठीक है। मिट्टी की नमी और मौसम से तुरंत सिंचाई की आवश्यकता नहीं दिखती।'
+    },
+    ur:{
+      waiting:'درست کھیت اور موسم کی معلومات سے مجموعی زرعی مشورہ بنانے کا انتظار ہے۔',
+      rainHighMoisture:'ابھی آبپاشی نہ کریں۔ بارش ہو رہی ہے اور مٹی کی نمی زیادہ ہے، اس لیے اضافی پانی سے پانی جمع ہو سکتا ہے۔ نکاسی اور فصل کی حالت دیکھیں۔',
+      rainLowMoisture:'ابھی آبپاشی کچھ دیر روکیں کیونکہ بارش ہو رہی ہے یا تیز بارش کا امکان ہے۔ مٹی کی نمی کم ہے، لیکن بارش سے پانی مل سکتا ہے۔ بارش کے بعد کھیت دوبارہ چیک کریں۔',
+      veryHighMoisture:'آبپاشی نہ کریں۔ مٹی کی نمی بہت زیادہ ہے۔ پانی جمع ہونے اور فصل پر زیادہ نمی کے اثرات پر نظر رکھیں۔',
+      highMoistureRainRisk:'آبپاشی سے بچیں۔ مٹی کی نمی زیادہ ہے اور موسم میں بھی نمی بڑھنے کا امکان ہے۔ اضافی پانی سے پانی جمع ہونے کا خطرہ بڑھ سکتا ہے۔',
+      criticalDry:'جلد آبپاشی کی ضرورت ہو سکتی ہے۔ مٹی کی نمی بہت کم ہے اور موسم خشک ہے جبکہ فصل کی پانی کی ضرورت زیادہ ہے۔ احتیاط سے آبپاشی کریں اور بعد میں نمی دوبارہ چیک کریں۔',
+      irrigateHeat:'آبپاشی کی ضرورت ہو سکتی ہے۔ مٹی کی نمی کم ہے، بارش کا امکان کم ہے اور درجہ حرارت زیادہ ہے۔ کھیت چیک کرکے فصل کی ضرورت کے مطابق پانی دیں۔',
+      irrigateWind:'آبپاشی کی ضرورت ہو سکتی ہے، لیکن تیز ہوا پانی کے نقصان کو بڑھا سکتی ہے۔ پہلے کھیت چیک کریں اور ہوا کم ہونے پر آبپاشی بہتر ہے۔',
+      irrigate:'آبپاشی کی ضرورت ہو سکتی ہے۔ مٹی کی نمی کم ہے اور بارش کا امکان کم ہے۔ کھیت چیک کرکے فصل کی ضرورت کے مطابق پانی دیں۔',
+      lowMoistureRainPossible:'مٹی کی نمی کم ہے، لیکن کچھ بارش کا امکان ہے۔ آبپاشی سے پہلے کھیت کی نگرانی کریں اور بارش شروع ہونے پر غیر ضروری پانی نہ دیں۔',
+      highDemand:'فصل کی پانی کی ضرورت زیادہ ہے۔ مٹی کی نمی ابھی بہت کم نہیں، لیکن گرم موسم کھیت کو جلد خشک کر سکتا ہے۔ نگرانی جاری رکھیں۔',
+      rainHelping:'بارش کھیت کو پانی فراہم کر رہی ہے۔ فوراً آبپاشی نہ کریں؛ بارش کے بعد مٹی کی نمی دوبارہ چیک کریں۔',
+      rainExpected:'تیز بارش کا امکان ہے۔ غیر ضروری آبپاشی روکیں اور بارش کے بعد مٹی کی نمی دوبارہ چیک کریں۔',
+      adequateHumid:'پانی کی صورتحال مناسب ہے، لیکن زیادہ نمی فصل کے لیے نمی سے متعلق خطرہ بڑھا سکتی ہے۔ غیر ضروری آبپاشی سے بچیں۔',
+      adequateWind:'مٹی کی نمی فی الحال مناسب ہے، لیکن تیز ہوا پانی کے نقصان کو بڑھا سکتی ہے۔ نگرانی جاری رکھیں۔',
+      adequate:'مجموعی طور پر پانی کی صورتحال مناسب ہے۔ مٹی کی نمی کافی ہے اور فوری آبپاشی کی ضرورت نظر نہیں آتی۔',
+      moderateCool:'مٹی کی نمی درمیانی ہے اور درجہ حرارت نسبتاً کم ہے، اس لیے ابھی فوری آبپاشی کی ضرورت نہیں۔',
+      rainGeneral:'بارش ہو رہی ہے یا تیز بارش کا امکان ہے۔ غیر ضروری آبپاشی سے بچیں اور بارش کے بعد مٹی کی نمی چیک کریں۔',
+      extremeHeat:'شدید گرمی کی وجہ سے فصل کی پانی کی ضرورت زیادہ ہے۔ مٹی کی نمی پر نظر رکھیں اور کھیت خشک ہونے پر آبپاشی کے لیے تیار رہیں۔',
+      highHumidity:'زیادہ نمی فصل سے متعلق خطرہ بڑھا سکتی ہے۔ غیر ضروری آبپاشی سے بچیں اور فصل و مٹی کی نگرانی کریں۔',
+      strongWind:'تیز ہوا بخارات اور آبپاشی میں پانی کے نقصان کو بڑھا سکتی ہے۔ مٹی کی نمی پر نظر رکھیں۔',
+      abnormalPh:'مجموعی طور پر کھیت کی صورتحال نگرانی کے لیے مناسب ہے، لیکن مٹی کا pH نگرانی کی حد سے باہر ہے۔ اصلاح سے پہلے مٹی کی جانچ کریں۔',
+      normal:'مجموعی طور پر کھیت کی صورتحال معمول کی نگرانی کے لیے مناسب ہے۔ مٹی کی نمی اور موسم فوری آبپاشی کی ضرورت نہیں بتاتے۔'
+    },
+    ks:{
+      waiting:'صحیح کھیت تہ موسم معلومات سۭتھ مجموعی زرعی صلاح بناون ہُند انتظار چھ۔',
+      rainHighMoisture:'فی الحال آبپاشی نہ کریو۔ بارش چھ تہ مٹی نمی زیادٕ چھ، اسہ اضافی پانی سۭتھ پانی جمع گژھِتھ۔ نکاسی تہ فصل حالت پَر نظر تھاویو۔',
+      rainLowMoisture:'فی الحال آبپاشی تھوڑ دیر روکِو، کیونکہ بارش چھ یا تیز بارش ہُند امکان چھ۔ مٹی نمی کم چھ، مگر بارش سۭتھ پانی ملِتھ۔ بارش پتہ کھیت دوبارہ چیک کریو۔',
+      veryHighMoisture:'آبپاشی نہ کریو۔ مٹی نمی بہت زیادٕ چھ۔ پانی جمع گژھن تہ فصلس پَر زیادٕ نمی ہُند اثر چیک کریو۔',
+      highMoistureRainRisk:'آبپاشی سۭتھ بچیو۔ مٹی نمی زیادٕ چھ تہ موسم منز بھی نمی بڑاون ہُند امکان چھ۔',
+      criticalDry:'جلد آبپاشی ضرورت گژھِتھ۔ مٹی نمی بہت کم چھ تہ موسم خشک چھ، فصلس پانی ضرورت زیادٕ چھ۔ احتیاط سۭتھ آبپاشی کریو تہ پتہ نمی دوبارہ چیک کریو۔',
+      irrigateHeat:'آبپاشی ضرورت گژھِتھ۔ مٹی نمی کم چھ، بارش ہُند امکان کم تہ درجہ حرارت زیادٕ چھ۔ کھیت چیک کریو تہ فصل ضرورت مطابق پانی دِیو۔',
+      irrigateWind:'آبپاشی ضرورت گژھِتھ، مگر تیز ہوا پانی ہُند نقصان بڑھاونس۔ کھیت چیک کریو تہ ہوا کم آسہ وقتس آبپاشی کریو۔',
+      irrigate:'آبپاشی ضرورت گژھِتھ۔ مٹی نمی کم چھ تہ بارش ہُند امکان کم چھ۔ کھیت چیک کریو تہ فصل ضرورت مطابق پانی دِیو۔',
+      lowMoistureRainPossible:'مٹی نمی کم چھ، مگر تھوڑ بارش ہُند امکان چھ۔ آبپاشی پَتہ کھیتس پَر نظر تھاویو تہ بارش شروع گژھنہ پتہ غیر ضروری پانی نہ دِیو۔',
+      highDemand:'فصلس پانی ضرورت زیادٕ چھ۔ مٹی نمی ابھی بہت کم چھ نہ، مگر گرم موسم کھیت جلد خشک کَرِتھ۔ نگرانی جاری تھاویو۔',
+      rainHelping:'بارش چھ کھیتس پانی دِوان۔ فوراً آبپاشی نہ کریو؛ بارش پتہ مٹی نمی دوبارہ چیک کریو۔',
+      rainExpected:'تیز بارش ہُند امکان چھ۔ غیر ضروری آبپاشی روکِو تہ بارش پتہ مٹی نمی دوبارہ چیک کریو۔',
+      adequateHumid:'پانی حالت مناسب چھ، مگر زیادٕ نمی فصلس متعلق خطرہ بڑھاونس۔ غیر ضروری آبپاشی سۭتھ بچیو۔',
+      adequateWind:'مٹی نمی فی الحال مناسب چھ، مگر تیز ہوا پانی ہُند نقصان بڑھاونس۔ نگرانی جاری تھاویو۔',
+      adequate:'مجموعی طور پانی حالت مناسب چھ۔ مٹی نمی کافی چھ تہ فوری آبپاشی ضرورت نظر چھ نہ۔',
+      moderateCool:'مٹی نمی درمیانی چھ تہ درجہ حرارت نسبتاً کم چھ، اسہ فی الحال فوری آبپاشی ضرورت چھ نہ۔',
+      rainGeneral:'بارش چھ یا تیز بارش ہُند امکان چھ۔ غیر ضروری آبپاشی سۭتھ بچیو تہ بارش پتہ مٹی نمی چیک کریو۔',
+      extremeHeat:'شدید گرمی سۭتھ فصلس پانی ضرورت زیادٕ چھ۔ مٹی نمی پَر نظر تھاویو تہ کھیت خشک گژھِتھ آبپاشی خٲطرٕ تیار تھاویو۔',
+      highHumidity:'زیادٕ نمی فصلس متعلق خطرہ بڑھاونس۔ غیر ضروری آبپاشی سۭتھ بچیو تہ فصل تہ مٹی نگرانی کریو۔',
+      strongWind:'تیز ہوا بخارات تہ آبپاشی منز پانی ہُند نقصان بڑھاونس۔ مٹی نمی پَر نظر تھاویو۔',
+      abnormalPh:'مجموعی کھیت حالت نگرانی خٲطرٕ مناسب چھ، مگر مٹی pH نگرانی حدس باہر چھ۔ اصلاح کرنہ پتہ مٹی چیک کریو۔',
+      normal:'مجموعی کھیت حالت معمول نگرانی خٲطرٕ مناسب چھ۔ مٹی نمی تہ موسم فوری آبپاشی ضرورت دِوان چھ نہ۔'
+    },
+    pa:{
+      waiting:'ਸਹੀ ਖੇਤ ਅਤੇ ਮੌਸਮ ਦੀ ਜਾਣਕਾਰੀ ਨਾਲ ਕੁੱਲ ਖੇਤੀ ਸਲਾਹ ਬਣਾਉਣ ਦੀ ਉਡੀਕ ਹੈ।',
+      rainHighMoisture:'ਹੁਣ ਸਿੰਚਾਈ ਨਾ ਕਰੋ। ਮੀਂਹ ਪੈ ਰਿਹਾ ਹੈ ਅਤੇ ਮਿੱਟੀ ਦੀ ਨਮੀ ਜ਼ਿਆਦਾ ਹੈ, ਇਸ ਲਈ ਵਾਧੂ ਪਾਣੀ ਨਾਲ ਪਾਣੀ ਖੜ੍ਹਾ ਹੋ ਸਕਦਾ ਹੈ। ਨਿਕਾਸ ਅਤੇ ਫਸਲ ਦੀ ਹਾਲਤ ਵੇਖੋ।',
+      rainLowMoisture:'ਹੁਣ ਸਿੰਚਾਈ ਕੁਝ ਸਮੇਂ ਲਈ ਰੋਕੋ ਕਿਉਂਕਿ ਮੀਂਹ ਪੈ ਰਿਹਾ ਹੈ ਜਾਂ ਤੇਜ਼ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਘੱਟ ਹੈ, ਪਰ ਮੀਂਹ ਨਾਲ ਪਾਣੀ ਮਿਲ ਸਕਦਾ ਹੈ। ਮੀਂਹ ਤੋਂ ਬਾਅਦ ਖੇਤ ਦੁਬਾਰਾ ਜਾਂਚੋ।',
+      veryHighMoisture:'ਸਿੰਚਾਈ ਨਾ ਕਰੋ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਬਹੁਤ ਜ਼ਿਆਦਾ ਹੈ। ਪਾਣੀ ਖੜ੍ਹਨ ਅਤੇ ਫਸਲ ਉੱਤੇ ਵੱਧ ਨਮੀ ਦੇ ਪ੍ਰਭਾਵ ਉੱਤੇ ਨਜ਼ਰ ਰੱਖੋ।',
+      highMoistureRainRisk:'ਸਿੰਚਾਈ ਤੋਂ ਬਚੋ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਜ਼ਿਆਦਾ ਹੈ ਅਤੇ ਮੌਸਮ ਵਿੱਚ ਵੀ ਨਮੀ ਵਧਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਵਾਧੂ ਪਾਣੀ ਨਾਲ ਪਾਣੀ ਖੜ੍ਹਨ ਦਾ ਖਤਰਾ ਵਧ ਸਕਦਾ ਹੈ।',
+      criticalDry:'ਜਲਦੀ ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਬਹੁਤ ਘੱਟ ਹੈ ਅਤੇ ਮੌਸਮ ਸੁੱਕਾ ਹੈ ਜਦਕਿ ਫਸਲ ਦੀ ਪਾਣੀ ਦੀ ਮੰਗ ਵੱਧ ਹੈ। ਧਿਆਨ ਨਾਲ ਸਿੰਚਾਈ ਕਰੋ ਅਤੇ ਬਾਅਦ ਵਿੱਚ ਨਮੀ ਦੁਬਾਰਾ ਜਾਂਚੋ।',
+      irrigateHeat:'ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਘੱਟ ਹੈ, ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਘੱਟ ਹੈ ਅਤੇ ਤਾਪਮਾਨ ਵੱਧ ਹੈ। ਖੇਤ ਜਾਂਚ ਕੇ ਫਸਲ ਦੀ ਲੋੜ ਅਨੁਸਾਰ ਪਾਣੀ ਦਿਓ।',
+      irrigateWind:'ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ, ਪਰ ਤੇਜ਼ ਹਵਾ ਪਾਣੀ ਦੀ ਹਾਨੀ ਵਧਾ ਸਕਦੀ ਹੈ। ਪਹਿਲਾਂ ਖੇਤ ਜਾਂਚੋ ਅਤੇ ਹਵਾ ਘੱਟ ਹੋਣ ਵੇਲੇ ਸਿੰਚਾਈ ਕਰਨਾ ਚੰਗਾ ਹੈ।',
+      irrigate:'ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਘੱਟ ਹੈ ਅਤੇ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਘੱਟ ਹੈ। ਖੇਤ ਜਾਂਚ ਕੇ ਫਸਲ ਦੀ ਲੋੜ ਅਨੁਸਾਰ ਪਾਣੀ ਦਿਓ।',
+      lowMoistureRainPossible:'ਮਿੱਟੀ ਦੀ ਨਮੀ ਘੱਟ ਹੈ, ਪਰ ਕੁਝ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਸਿੰਚਾਈ ਤੋਂ ਪਹਿਲਾਂ ਖੇਤ ਦੀ ਨਿਗਰਾਨੀ ਕਰੋ ਅਤੇ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਣ ਤੇ ਬਿਨਾਂ ਲੋੜ ਪਾਣੀ ਨਾ ਦਿਓ।',
+      highDemand:'ਫਸਲ ਦੀ ਪਾਣੀ ਦੀ ਮੰਗ ਵੱਧ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਹਾਲੇ ਬਹੁਤ ਘੱਟ ਨਹੀਂ, ਪਰ ਗਰਮ ਮੌਸਮ ਖੇਤ ਨੂੰ ਜਲਦੀ ਸੁਕਾ ਸਕਦਾ ਹੈ। ਨਿਗਰਾਨੀ ਜਾਰੀ ਰੱਖੋ।',
+      rainHelping:'ਮੀਂਹ ਖੇਤ ਨੂੰ ਪਾਣੀ ਦੇ ਰਿਹਾ ਹੈ। ਤੁਰੰਤ ਸਿੰਚਾਈ ਨਾ ਕਰੋ; ਮੀਂਹ ਤੋਂ ਬਾਅਦ ਮਿੱਟੀ ਦੀ ਨਮੀ ਦੁਬਾਰਾ ਜਾਂਚੋ।',
+      rainExpected:'ਤੇਜ਼ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਸਿੰਚਾਈ ਰੋਕੋ ਅਤੇ ਮੀਂਹ ਤੋਂ ਬਾਅਦ ਮਿੱਟੀ ਦੀ ਨਮੀ ਦੁਬਾਰਾ ਜਾਂਚੋ।',
+      adequateHumid:'ਪਾਣੀ ਦੀ ਸਥਿਤੀ ਠੀਕ ਹੈ, ਪਰ ਜ਼ਿਆਦਾ ਨਮੀ ਫਸਲ ਲਈ ਨਮੀ ਨਾਲ ਜੁੜਿਆ ਖਤਰਾ ਵਧਾ ਸਕਦੀ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਸਿੰਚਾਈ ਤੋਂ ਬਚੋ।',
+      adequateWind:'ਮਿੱਟੀ ਦੀ ਨਮੀ ਇਸ ਵੇਲੇ ਠੀਕ ਹੈ, ਪਰ ਤੇਜ਼ ਹਵਾ ਪਾਣੀ ਦੀ ਹਾਨੀ ਵਧਾ ਸਕਦੀ ਹੈ। ਨਿਗਰਾਨੀ ਜਾਰੀ ਰੱਖੋ।',
+      adequate:'ਕੁੱਲ ਮਿਲਾ ਕੇ ਪਾਣੀ ਦੀ ਸਥਿਤੀ ਠੀਕ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਕਾਫ਼ੀ ਹੈ ਅਤੇ ਤੁਰੰਤ ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਨਹੀਂ ਦਿਖਦੀ।',
+      moderateCool:'ਮਿੱਟੀ ਦੀ ਨਮੀ ਦਰਮਿਆਨੀ ਹੈ ਅਤੇ ਤਾਪਮਾਨ ਮੁਕਾਬਲੇ ਵਿੱਚ ਘੱਟ ਹੈ, ਇਸ ਲਈ ਹੁਣੇ ਤੁਰੰਤ ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਨਹੀਂ।',
+      rainGeneral:'ਮੀਂਹ ਪੈ ਰਿਹਾ ਹੈ ਜਾਂ ਤੇਜ਼ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਸਿੰਚਾਈ ਤੋਂ ਬਚੋ ਅਤੇ ਮੀਂਹ ਤੋਂ ਬਾਅਦ ਮਿੱਟੀ ਦੀ ਨਮੀ ਜਾਂਚੋ।',
+      extremeHeat:'ਬਹੁਤ ਗਰਮੀ ਕਾਰਨ ਫਸਲ ਦੀ ਪਾਣੀ ਦੀ ਮੰਗ ਵੱਧ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਉੱਤੇ ਨਜ਼ਰ ਰੱਖੋ ਅਤੇ ਖੇਤ ਸੁੱਕਣ ਤੇ ਸਿੰਚਾਈ ਲਈ ਤਿਆਰ ਰਹੋ।',
+      highHumidity:'ਜ਼ਿਆਦਾ ਨਮੀ ਫਸਲ ਨਾਲ ਜੁੜਿਆ ਖਤਰਾ ਵਧਾ ਸਕਦੀ ਹੈ। ਬਿਨਾਂ ਲੋੜ ਸਿੰਚਾਈ ਤੋਂ ਬਚੋ ਅਤੇ ਫਸਲ ਤੇ ਮਿੱਟੀ ਦੀ ਨਿਗਰਾਨੀ ਕਰੋ।',
+      strongWind:'ਤੇਜ਼ ਹਵਾ ਬਾਫ਼ ਬਣਨ ਅਤੇ ਸਿੰਚਾਈ ਵਿੱਚ ਪਾਣੀ ਦੀ ਹਾਨੀ ਵਧਾ ਸਕਦੀ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਉੱਤੇ ਨਜ਼ਰ ਰੱਖੋ।',
+      abnormalPh:'ਕੁੱਲ ਮਿਲਾ ਕੇ ਖੇਤ ਦੀ ਸਥਿਤੀ ਨਿਗਰਾਨੀ ਲਈ ਠੀਕ ਹੈ, ਪਰ ਮਿੱਟੀ ਦਾ pH ਨਿਗਰਾਨੀ ਸੀਮਾ ਤੋਂ ਬਾਹਰ ਹੈ। ਸੁਧਾਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਮਿੱਟੀ ਦੀ ਜਾਂਚ ਕਰੋ।',
+      normal:'ਕੁੱਲ ਮਿਲਾ ਕੇ ਖੇਤ ਦੀ ਸਥਿਤੀ ਆਮ ਨਿਗਰਾਨੀ ਲਈ ਠੀਕ ਹੈ। ਮਿੱਟੀ ਦੀ ਨਮੀ ਅਤੇ ਮੌਸਮ ਤੁਰੰਤ ਸਿੰਚਾਈ ਦੀ ਲੋੜ ਨਹੀਂ ਦਿਖਾਉਂਦੇ।'
+    }
+  };
+
+  // Kashmiri uses its own localized insight set; all other supported languages do too.
+  const textSet=localizedInsights[currentFarmerLanguage]||localizedInsights.en;
+  let result=textSet[insightKey]||localizedInsights.en[insightKey];
+
+  // Keep the existing pH warning behavior, but localize it.
+  if(Number.isFinite(ph)&&(ph<5.5||ph>8.0) && result.indexOf('pH')===-1){
+    const phWarning={
+      en:' Soil pH is also outside the monitored range and should be checked before soil amendments.',
+      hi:' मिट्टी का pH भी निगरानी सीमा से बाहर है; मिट्टी में सुधार करने से पहले इसकी जाँच करें।',
+      ur:' مٹی کا pH بھی نگرانی کی حد سے باہر ہے؛ مٹی میں اصلاح سے پہلے اس کی جانچ کریں۔',
+      ks:' مٹی pH بھی نگرانی حدس باہر چھ؛ مٹی منز اصلاح کرنہ پتہ چیک کریو۔',
+      pa:' ਮਿੱਟੀ ਦਾ pH ਵੀ ਨਿਗਰਾਨੀ ਸੀਮਾ ਤੋਂ ਬਾਹਰ ਹੈ; ਮਿੱਟੀ ਵਿੱਚ ਸੁਧਾਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇਸ ਦੀ ਜਾਂਚ ਕਰੋ।'
+    };
+    result += phWarning[currentFarmerLanguage]||phWarning.en;
+  }
+
+  lastFarmerInsights=[result];
+  container.innerHTML='<div class="ai-suggestion" style="font-weight:900;border-left:4px solid #2e8b57;">'+result+'</div>';
+};
+
+window.addEventListener('DOMContentLoaded',()=>{ setInterfaceLanguage(currentFarmerLanguage); });
+
+</script>
+
+</body>
+</html>
